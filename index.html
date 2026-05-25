@@ -1,1497 +1,1304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bay Area Speed Skating Inc - Gliding the Golden State</title>
-    <!-- Tailwind CSS for utility styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter for clean typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome for modern icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bay Area Speed Skating Inc. | California Youth & Masters Speed Skating</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pacificTeal: {
+              50: '#f0fbfb',
+              100: '#dafafa',
+              500: '#00a8b5',
+              600: '#008e9b',
+              700: '#00707a',
+            },
+            sunsetOrange: {
+              500: '#f97316',
+              600: '#ea580c',
+            },
+            poppyGold: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+            }
+          }
         }
-        /* Custom scrollbar optimized for a clean, light aesthetic */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #f59e0b;
-        }
-    </style>
+      }
+    }
+  </script>
+  
+  <!-- Google Fonts Configuration -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Base Page Styling -->
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, h4, .heading-font {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .custom-radial {
+      background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.08) 0%, rgba(0, 168, 181, 0.05) 50%, transparent 100%);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col custom-radial">
 
-    <!-- Navigation Bar (Light Mode with California Warm accents) -->
-    <header class="sticky top-0 z-40 backdrop-blur-md bg-white/90 border-b border-slate-200/80 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
-                <a href="#home" class="flex items-center space-x-3 group" onclick="switchTab('home')">
-                    <div class="bg-gradient-to-br from-amber-500 via-orange-500 to-teal-500 p-2.5 rounded-xl shadow-lg shadow-amber-500/10 transform group-hover:scale-105 transition-all">
-                        <!-- Custom Inline Skater SVG Icon -->
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="text-xl font-extrabold tracking-wider text-slate-900 uppercase">BAY AREA</span>
-                        <span class="block text-xs font-bold tracking-widest text-teal-600 uppercase">Speed Skating Inc</span>
-                    </div>
-                </a>
+  <!-- Toast alert container for async confirmations -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-2 max-w-sm w-full px-4 sm:px-0"></div>
 
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-1 lg:space-x-2">
-                    <button onclick="switchTab('home')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-semibold text-teal-600 bg-teal-500/10 hover:bg-teal-500/20 transition-colors" data-tab="home">Home</button>
-                    <button onclick="switchTab('events')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors" data-tab="events">Events & Programs</button>
-                    <button onclick="switchTab('support')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors" data-tab="support">
-                        <i class="fa-solid fa-hand-holding-dollar mr-1 text-amber-500"></i>Support Us
-                    </button>
-                    <button onclick="switchTab('about')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors" data-tab="about">Our Mission</button>
-                    <button onclick="switchTab('admin')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors" data-tab="admin">
-                        <i class="fa-solid fa-lock mr-1.5 text-xs"></i>Admin Portal
-                    </button>
-                </nav>
-
-                <!-- Mobile Navigation Toggle -->
-                <div class="flex md:hidden">
-                    <button id="mobile-menu-btn" class="p-2 text-slate-600 hover:text-slate-900 focus:outline-none" aria-label="Toggle Menu">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
+  <!-- Header & Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" onclick="switchTab('home')" class="flex items-center gap-3 group focus:outline-none">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-pacificTeal-600 via-sunsetOrange-500 to-poppyGold-400 p-[2px] shadow-md group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
+            <!-- Sleek lightning bolt speed skating asset -->
+            <svg class="w-6 h-6 text-pacificTeal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 shadow-inner">
-            <button onclick="switchTab('home')" class="block w-full text-left px-4 py-3 rounded-lg text-base font-semibold text-teal-600 bg-teal-50" data-tab-mobile="home">Home</button>
-            <button onclick="switchTab('events')" class="block w-full text-left px-4 py-3 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-50" data-tab-mobile="events">Events & Programs</button>
-            <button onclick="switchTab('support')" class="block w-full text-left px-4 py-3 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-50" data-tab-mobile="support">
-                <i class="fa-solid fa-hand-holding-dollar mr-1.5 text-amber-500"></i>Support Us / Donate
-            </button>
-            <button onclick="switchTab('about')" class="block w-full text-left px-4 py-3 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-50" data-tab-mobile="about">Our Mission</button>
-            <button onclick="switchTab('admin')" class="block w-full text-left px-4 py-3 rounded-lg text-base font-semibold text-slate-500 hover:bg-slate-50" data-tab-mobile="admin">
-                <i class="fa-solid fa-lock mr-1.5 text-xs"></i>Admin Portal
-            </button>
+        <div>
+          <span class="block text-lg font-bold text-slate-900 tracking-tight leading-tight">Bay Area</span>
+          <span class="block text-xs font-semibold text-pacificTeal-600 tracking-widest uppercase -mt-0.5">Speed Skating Inc.</span>
         </div>
-    </header>
+      </a>
 
-    <!-- Interactive Notification Toast Banner -->
-    <div id="notification-banner" class="fixed top-24 right-4 z-50 transform translate-x-128 opacity-0 transition-all duration-300 pointer-events-none">
-        <div class="bg-white border border-slate-200 text-slate-900 px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-3 max-w-md pointer-events-auto">
-            <div class="bg-amber-500/10 p-2 rounded-lg text-amber-600" id="notification-icon">
-                <i class="fa-solid fa-info-circle text-lg"></i>
+      <!-- Desktop Navigation Menu (Maintains complete security with zero public Admin buttons) -->
+      <nav class="hidden md:flex items-center gap-8">
+        <button onclick="switchTab('home')" id="nav-home" class="font-medium text-pacificTeal-600 border-b-2 border-pacificTeal-500 pb-1 pt-1 transition-all">Home</button>
+        <button onclick="switchTab('events')" id="nav-events" class="font-medium text-slate-600 hover:text-pacificTeal-600 pb-1 pt-1 transition-all">Events & Races</button>
+        <button onclick="switchTab('support')" id="nav-support" class="font-medium text-slate-600 hover:text-pacificTeal-600 pb-1 pt-1 transition-all">Support Us</button>
+        <button onclick="openRegistrationModal()" class="bg-gradient-to-r from-pacificTeal-600 to-sunsetOrange-500 hover:from-pacificTeal-700 hover:to-sunsetOrange-600 text-white px-5 py-2.5 rounded-xl font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-sm">
+          Register to Skate
+        </button>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white shadow-inner py-4 px-6 flex flex-col gap-4">
+      <button onclick="switchTab('home'); toggleMobileMenu()" class="text-left font-medium text-slate-900 py-2 border-b border-slate-50">Home</button>
+      <button onclick="switchTab('events'); toggleMobileMenu()" class="text-left font-medium text-slate-900 py-2 border-b border-slate-50">Events & Races</button>
+      <button onclick="switchTab('support'); toggleMobileMenu()" class="text-left font-medium text-slate-900 py-2 border-b border-slate-50">Support Us</button>
+      <button onclick="openRegistrationModal(); toggleMobileMenu()" class="w-full bg-gradient-to-r from-pacificTeal-600 to-sunsetOrange-500 text-white py-3 rounded-xl font-semibold text-center mt-2 shadow-sm">
+        Register to Skate
+      </button>
+    </div>
+  </header>
+
+  <!-- Main View Frame -->
+  <main class="flex-grow">
+
+    <!-- TAB: HOME (Landing Page) -->
+    <section id="tab-home" class="block animate-fade-in">
+      <!-- Hero Unit -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-pacificTeal-50 border border-pacificTeal-100 text-pacificTeal-700 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-sunsetOrange-500 animate-pulse"></span>
+            Northern California's Fast-Track Skating Non-Profit
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
+            Chasing Limits on the <br class="hidden sm:inline">
+            <span class="bg-gradient-to-r from-pacificTeal-600 via-sunsetOrange-500 to-poppyGold-500 bg-clip-text text-transparent">California Coastline</span>
+          </h1>
+          <p class="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            Bay Area Speed Skating Inc. (BASS) develops beginner to elite speed skaters. We provide access to specialized instruction, world-class ice/inline track environments, and a healthy competitive community.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <button onclick="switchTab('events')" class="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-bold shadow-lg transition-all transform hover:-translate-y-1">
+              Browse Upcoming Events
+            </button>
+            <button onclick="switchTab('support')" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-800 rounded-2xl font-bold shadow-sm transition-all transform hover:-translate-y-1">
+              Support Our Programs
+            </button>
+          </div>
+          
+          <!-- Highlights Counter Banner -->
+          <div class="pt-8 grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0 border-t border-slate-200">
+            <div>
+              <span class="block text-3xl font-extrabold text-slate-900">501(c)(3)</span>
+              <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Tax-Exempt Status</span>
             </div>
             <div>
-                <p class="font-bold text-sm text-slate-900" id="notification-title">Success</p>
-                <p class="text-xs text-slate-500 mt-0.5" id="notification-message">Your action was completed successfully.</p>
+              <span id="stat-active-events" class="block text-3xl font-extrabold text-pacificTeal-600">3</span>
+              <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Active Meets</span>
             </div>
-            <button onclick="hideNotification()" class="text-slate-400 hover:text-slate-600 p-1 ml-auto">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            <div>
+              <span id="stat-total-athletes" class="block text-3xl font-extrabold text-sunsetOrange-500">42</span>
+              <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Skater Roster</span>
+            </div>
+          </div>
         </div>
-    </div>
 
-    <!-- Main Content Area -->
-    <main class="flex-grow">
-        
-        <!-- Tab: Home -->
-        <section id="tab-home" class="tab-content block">
-            <!-- Hero Section -->
-            <div class="relative overflow-hidden bg-white pt-16 pb-20 sm:pt-24 sm:pb-32 border-b border-slate-100">
-                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(20,184,166,0.08),transparent_50%)]"></div>
-                <div class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-slate-50 shadow-inner ring-1 ring-slate-100" aria-hidden="true"></div>
-
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                        <!-- Hero Text -->
-                        <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
-                            <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-bold bg-teal-500/10 text-teal-700 border border-teal-500/20 uppercase tracking-widest">
-                                <i class="fa-solid fa-certificate mr-1.5 animate-pulse text-teal-500"></i>501(c)(3) Tax-Exempt Non-Profit
-                            </span>
-                            <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 leading-tight">
-                                Speed. Power. <br>
-                                <span class="bg-clip-text text-transparent bg-gradient-to-r from-teal-500 via-orange-500 to-amber-500">Gliding the Golden State.</span>
-                            </h1>
-                            <p class="text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
-                                Empowering Northern California youth, supporting West Coast athletes, and introducing the high-octane world of speed skating from San Francisco to the South Bay.
-                            </p>
-                            <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                                <button onclick="switchTab('events')" class="px-8 py-4 bg-gradient-to-r from-teal-500 to-orange-500 hover:from-teal-600 hover:to-orange-600 text-white font-bold rounded-xl shadow-lg shadow-teal-500/25 transform hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center space-x-2">
-                                    <span>Discover Programs</span>
-                                    <i class="fa-solid fa-arrow-right text-sm"></i>
-                                </button>
-                                <button onclick="switchTab('support')" class="px-8 py-4 bg-white hover:bg-slate-50 border border-slate-200 text-teal-600 hover:text-teal-700 font-bold rounded-xl shadow-sm transition-all text-center flex items-center justify-center space-x-2">
-                                    <i class="fa-solid fa-heart text-orange-500"></i>
-                                    <span>Fund & Donate</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Hero Feature Skater Graphic / Banner -->
-                        <div class="lg:col-span-5 relative">
-                            <div class="aspect-square relative max-w-md mx-auto">
-                                <div class="absolute inset-0 bg-gradient-to-br from-teal-500 to-amber-400 rounded-3xl opacity-10 blur-3xl"></div>
-                                <div class="absolute inset-4 bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-xl overflow-hidden group">
-                                    <div class="absolute -right-8 -top-8 w-32 h-32 bg-teal-500/10 rounded-full blur-2xl group-hover:bg-teal-500/20 transition-all duration-500"></div>
-                                    
-                                    <div class="flex justify-between items-start">
-                                        <i class="fa-solid fa-stopwatch text-4xl text-teal-500"></i>
-                                        <span class="text-xs font-bold tracking-widest text-slate-400 uppercase">Est. 2021 | Bay Area</span>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Empowering youth from the Bay to the podium</h3>
-                                        <p class="text-slate-600 text-sm font-light">We offer certified ice instruction, athletic equipment scholarships, and official speed trials across the Bay Area.</p>
-                                    </div>
-                                    <div class="border-t border-slate-100 pt-4 flex justify-between text-xs text-slate-500">
-                                        <div><span class="text-teal-600 font-bold block text-sm">350+</span>Skaters Trained</div>
-                                        <div><span class="text-teal-600 font-bold block text-sm">5+</span>rink ovals</div>
-                                        <div><span class="text-teal-600 font-bold block text-sm">$30k+</span>Funded Grants</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Hero Graphic (Inline SVG Design - Abstract California Speed Loop) -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md aspect-square bg-gradient-to-br from-pacificTeal-50 to-orange-50 rounded-full border-4 border-white shadow-2xl overflow-hidden flex items-center justify-center">
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 400" fill="none">
+              <circle cx="200" cy="200" r="180" stroke="#f1f5f9" stroke-width="2"/>
+              <circle cx="200" cy="200" r="140" stroke="#f1f5f9" stroke-width="1.5" stroke-dasharray="4,4"/>
+              <path d="M40 200 C 120 320, 280 320, 360 200" stroke="#f97316" stroke-width="3" stroke-linecap="round" stroke-dasharray="2,6" opacity="0.4"/>
+              <path d="M40 180 C 120 300, 280 300, 360 180" stroke="#00a8b5" stroke-width="2" stroke-linecap="round"/>
+              <g transform="translate(130, 110) scale(1.4)">
+                <circle cx="50" cy="40" r="8" fill="#0f172a" />
+                <path d="M50 48 L25 55 L35 75 L10 85" stroke="#0f172a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M48 48 L65 58 L55 85 L75 92" stroke="#00a8b5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 88 L25 88" stroke="#f97316" stroke-width="3"/>
+                <path d="M50 95 L80 95" stroke="#f59e0b" stroke-width="3"/>
+              </g>
+            </svg>
+            <div class="absolute bottom-6 bg-white/90 backdrop-blur border border-slate-200 px-6 py-3 rounded-2xl shadow-lg flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+              <span class="text-sm font-semibold text-slate-800">Learn Speed, Build Grit.</span>
             </div>
-
-            <!-- Highlighted Feature Metrics -->
-            <section class="py-12 bg-white border-b border-slate-200/60">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="flex items-start space-x-4 p-4">
-                            <div class="bg-teal-500/10 p-3 rounded-xl text-teal-600">
-                                <i class="fa-solid fa-award text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 text-lg">Elite US Speedskating Coaches</h4>
-                                <p class="text-slate-600 text-sm mt-1">Structured training led by certified West Coast athletic coaches & short track legends.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4 p-4">
-                            <div class="bg-orange-500/10 p-3 rounded-xl text-orange-600">
-                                <i class="fa-solid fa-heart text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 text-lg">Scholarships & Outreach</h4>
-                                <p class="text-slate-600 text-sm mt-1">Financial assistance program guaranteeing modern skate leases to underprivileged youth.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4 p-4">
-                            <div class="bg-amber-500/10 p-3 rounded-xl text-amber-600">
-                                <i class="fa-solid fa-bolt text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 text-lg">High-Tech Equipment Lab</h4>
-                                <p class="text-slate-600 text-sm mt-1">Specialized blade radius tuning, manual stone alignment workshops, and video playback.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Quick Events Preview Section -->
-            <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-                    <div>
-                        <h2 class="text-3xl font-extrabold text-slate-900">Rink Calendars & Meets</h2>
-                        <p class="text-slate-600 mt-2">Claim your spot on our next active short track session or community speed trial.</p>
-                    </div>
-                    <button onclick="switchTab('events')" class="mt-4 md:mt-0 text-teal-600 hover:text-teal-700 font-bold text-sm flex items-center space-x-1.5 group">
-                        <span>View all programs</span>
-                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </button>
-                </div>
-
-                <!-- Live Dynamic Quick Previews (Light Mode) -->
-                <div id="quick-events-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Loaded dynamically via JavaScript state -->
-                </div>
-            </section>
-        </section>
-
-        <!-- Tab: Events & Programs List -->
-        <section id="tab-events" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Programs & Short Track Cups</h2>
-                <p class="text-slate-600 mt-4 leading-relaxed">Whether you are stepping onto the ice for the first time or shaving milliseconds off your lap times, we have dedicated lanes ready for you across Bay Area facilities.</p>
-            </div>
-
-            <!-- Program Category Filtering -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12" id="category-filters">
-                <button onclick="filterEvents('all')" class="category-btn px-5 py-2.5 rounded-full text-sm font-bold border bg-teal-500 text-white border-teal-500 hover:opacity-90 transition-all duration-200">
-                    All Formats
-                </button>
-                <button onclick="filterEvents('Clinic')" class="category-btn px-5 py-2.5 rounded-full text-sm font-semibold border bg-white text-slate-600 border-slate-200 hover:text-slate-950 hover:border-slate-300 transition-all duration-200">
-                    Coaching & Clinics
-                </button>
-                <button onclick="filterEvents('Meet')" class="category-btn px-5 py-2.5 rounded-full text-sm font-semibold border bg-white text-slate-600 border-slate-200 hover:text-slate-950 hover:border-slate-300 transition-all duration-200">
-                    Race Meets & Cups
-                </button>
-                <button onclick="filterEvents('Community')" class="category-btn px-5 py-2.5 rounded-full text-sm font-semibold border bg-white text-slate-600 border-slate-200 hover:text-slate-950 hover:border-slate-300 transition-all duration-200">
-                    Community skates
-                </button>
-            </div>
-
-            <!-- Events Grid -->
-            <div id="events-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Loaded dynamically by JS state -->
-            </div>
-        </section>
-
-        <!-- Tab: Fundraising & Donations (Tax-Exempt Status & Pledges) -->
-        <section id="tab-support" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-teal-600 font-extrabold uppercase tracking-widest text-sm block mb-2">Fundraising Campaign</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Help Us Fund the Next Generation on Ice</h2>
-                <p class="text-slate-600 mt-4 leading-relaxed font-light">
-                    Every donation fuels youth scholarships, skate equipment leases, and championship track hours for competitive skaters from Oakland to San Jose.
-                </p>
-            </div>
-
-            <!-- Official 501(c)(3) EIN Banner Certificate styling -->
-            <div class="bg-gradient-to-br from-slate-50 via-white to-teal-500/5 border border-slate-200 rounded-2xl p-8 max-w-3xl mx-auto mb-16 shadow-md relative overflow-hidden">
-                <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-40 h-40 bg-teal-500/5 rounded-full blur-3xl"></div>
-                
-                <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 relative z-10">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-teal-500/10 p-4 rounded-full text-teal-600">
-                            <i class="fa-solid fa-scale-balanced text-3xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-900">Certified 501(c)(3) Public Charity</h3>
-                            <p class="text-slate-500 text-sm mt-0.5">Amateur athletic tax-exempt status verified by the IRS.</p>
-                        </div>
-                    </div>
-                    <div class="bg-slate-50 border border-slate-200 px-6 py-4 rounded-xl text-center md:text-right w-full md:w-auto">
-                        <span class="text-xs text-slate-400 uppercase tracking-widest font-bold block">Tax ID / EIN Number</span>
-                        <span class="text-2xl font-mono font-extrabold text-teal-600 select-all">41-5160846</span>
-                        <span class="block text-[10px] text-emerald-600 mt-0.5 font-semibold"><i class="fa-solid fa-square-check mr-1"></i>Tax Deductible Receipts Issued</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <!-- Left: Interactive Donation Campaign Progress & Tier Selection -->
-                <div class="lg:col-span-7 space-y-8">
-                    <!-- Progress Card -->
-                    <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm">
-                        <div class="flex justify-between items-baseline mb-3">
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900">2026 NorCal Skating Fund</h3>
-                                <p class="text-xs text-slate-500 mt-0.5">Assisting underprivileged junior skaters with training gear</p>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-2xl font-black text-teal-600" id="live-raised-amount">$0</span>
-                                <span class="text-xs text-slate-400 block">raised of <span id="live-goal-amount">$10,000</span> goal</span>
-                            </div>
-                        </div>
-
-                        <!-- Dynamic Progress Bar -->
-                        <div class="w-full bg-slate-100 h-4 rounded-full overflow-hidden border border-slate-200/60 relative mb-4">
-                            <div id="live-progress-fill" class="bg-gradient-to-r from-teal-500 via-orange-500 to-amber-500 h-full transition-all duration-1000" style="width: 0%"></div>
-                        </div>
-
-                        <div class="flex justify-between text-xs text-slate-500 font-bold">
-                            <span id="live-progress-pct" class="text-slate-600">0% Complete</span>
-                            <span id="live-pledge-count" class="text-slate-600">0 Pledges Logged</span>
-                        </div>
-                    </div>
-
-                    <!-- Tier Cards -->
-                    <div class="space-y-4">
-                        <h3 class="text-lg font-bold text-slate-900">Select a Funding Impact Tier</h3>
-                        
-                        <!-- Tier 1 -->
-                        <div onclick="selectDonationTier(25, 'Sponsor a Blade Sharpening Kit')" 
-                             class="tier-selector bg-white hover:bg-slate-50/50 border border-slate-200 hover:border-teal-500 rounded-xl p-5 cursor-pointer transition-all flex justify-between items-center group shadow-sm">
-                            <div class="space-y-1 pr-4">
-                                <span class="text-xs font-bold text-teal-600">Tier 1</span>
-                                <h4 class="font-bold text-slate-900">Blade Sharpening Sponsor</h4>
-                                <p class="text-xs text-slate-500 font-light">Supplies diamond-abrasive sharpening stones for active youth program blade-profile tuning.</p>
-                            </div>
-                            <span class="text-2xl font-extrabold text-teal-600 group-hover:scale-105 transition-transform">$25</span>
-                        </div>
-
-                        <!-- Tier 2 -->
-                        <div onclick="selectDonationTier(75, 'Lease Skates for a Young Athlete')" 
-                             class="tier-selector bg-white hover:bg-slate-50/50 border border-slate-200 hover:border-teal-500 rounded-xl p-5 cursor-pointer transition-all flex justify-between items-center group shadow-sm">
-                            <div class="space-y-1 pr-4">
-                                <span class="text-xs font-bold text-amber-600">Tier 2</span>
-                                <h4 class="font-bold text-slate-900">Full-Season Skate Lease</h4>
-                                <p class="text-xs text-slate-500 font-light">Lends professional, long-track or short-track specialized speed skates to a child athlete free of charge.</p>
-                            </div>
-                            <span class="text-2xl font-extrabold text-teal-600 group-hover:scale-105 transition-transform">$75</span>
-                        </div>
-
-                        <!-- Tier 3 -->
-                        <div onclick="selectDonationTier(150, 'Fund 2 Hours of Championship Ice Time')" 
-                             class="tier-selector bg-white hover:bg-slate-50/50 border border-slate-200 hover:border-teal-500 rounded-xl p-5 cursor-pointer transition-all flex justify-between items-center group shadow-sm">
-                            <div class="space-y-1 pr-4">
-                                <span class="text-xs font-bold text-orange-600">Tier 3</span>
-                                <h4 class="font-bold text-slate-900">Olympic Oval Ice Grant</h4>
-                                <p class="text-xs text-slate-500 font-light">Covers venue lease charges for standard 111-meter ice sheets to execute high-speed timed trials.</p>
-                            </div>
-                            <span class="text-2xl font-extrabold text-teal-600 group-hover:scale-105 transition-transform">$150</span>
-                        </div>
-
-                        <!-- Tier 4 -->
-                        <div onclick="selectDonationTier(500, 'Gold Medal Sponsorship')" 
-                             class="tier-selector bg-white hover:bg-slate-50/50 border border-slate-200 hover:border-teal-500 rounded-xl p-5 cursor-pointer transition-all flex justify-between items-center group shadow-sm">
-                            <div class="space-y-1 pr-4">
-                                <span class="text-xs font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-amber-600 uppercase">Premium</span>
-                                <h4 class="font-bold text-slate-900">Gold Medal Partner</h4>
-                                <p class="text-xs text-slate-500 font-light">Your name or corporate banner showcased at regional NorCal meets, plus full sponsorship for two competitive juniors.</p>
-                            </div>
-                            <span class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-amber-600 group-hover:scale-105 transition-transform">$500</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Donation Form -->
-                <div class="lg:col-span-5">
-                    <div class="bg-white border border-slate-200 rounded-2xl p-8 sticky top-28 shadow-sm">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Simulated Pledge Form</h3>
-                        <p class="text-xs text-slate-500 mb-6">Pledge a contribution below to see how our interactive non-profit ledger updates instantly.</p>
-
-                        <form id="donation-form" onsubmit="submitDonation(event)" class="space-y-4">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Donor Name / Corporation</label>
-                                <input type="text" id="don-name" required placeholder="e.g., Jane Doe"
-                                       class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none text-sm">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Email Address</label>
-                                <input type="email" id="don-email" required placeholder="jane.doe@example.com"
-                                       class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none text-sm">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Contribution Amount ($ USD)</label>
-                                <div class="relative">
-                                    <span class="absolute left-4 top-3.5 text-slate-400 text-sm font-bold">$</span>
-                                    <input type="number" id="don-amount" required min="5" max="10000" placeholder="100"
-                                           class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl pl-8 pr-4 py-3 text-slate-900 focus:outline-none text-sm font-bold">
-                                </div>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Designated Impact Tier</label>
-                                <input type="text" id="don-tier" value="Custom Contribution" readonly
-                                       class="w-full bg-slate-100/80 border border-slate-200 rounded-xl px-4 py-3 text-slate-600 focus:outline-none text-sm font-semibold">
-                            </div>
-
-                            <button type="submit" class="w-full py-4 bg-gradient-to-r from-teal-500 to-orange-500 hover:from-teal-600 hover:to-orange-600 text-white font-bold rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 mt-2 flex items-center justify-center space-x-2">
-                                <i class="fa-solid fa-heart-circle-check"></i>
-                                <span>Submit Pledge Donation</span>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tab: Our Mission & About -->
-        <section id="tab-about" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-6 space-y-6">
-                    <span class="text-teal-600 font-extrabold uppercase tracking-widest text-sm">Our Mission</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Chasing sunsets & fast lines in Northern California</h2>
-                    <p class="text-slate-600 leading-relaxed font-light">
-                        Bay Area Speed Skating Inc is a dedicated 501(c)(3) organization founded to remove physical and financial limits from speed skating. By coordinating closely with ice centers from Oakland to San Jose, we bring olympic-style speed skating to communities across California.
-                    </p>
-                    <p class="text-slate-600 leading-relaxed font-light">
-                        Through premium skate rental pools, expert instruction camps, and local time trials, we foster technical skill, self-confidence, sportsmanship, and raw athletic power.
-                    </p>
-                    
-                    <div class="border-l-4 border-teal-500 pl-4 py-2 italic text-slate-500 font-medium">
-                        "Speed skating combines precise balance, explosive power, and clean edge control. We believe any skater in NorCal should have a track to chase."
-                    </div>
-                </div>
-
-                <!-- Interactive SVG Rink Map Illustration -->
-                <div class="lg:col-span-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Speed Skating Rink Mechanics</h3>
-                    <div class="w-full h-64 bg-slate-100 rounded-xl relative border border-slate-200 overflow-hidden flex items-center justify-center">
-                        <div class="absolute border-4 border-dashed border-teal-500/20 rounded-full w-5/6 h-5/6 flex items-center justify-center">
-                            <div class="absolute border-4 border-teal-500 rounded-full w-2/3 h-2/3 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm">
-                                <span class="text-teal-600 font-extrabold text-xs tracking-widest uppercase text-center">Oakland & San Jose</span>
-                                <span class="text-[10px] text-slate-400 font-semibold mt-1">111m Standard Short Track</span>
-                            </div>
-                        </div>
-                        <div class="absolute top-1/2 left-8 w-2.5 h-2.5 bg-teal-500 rounded-full animate-ping"></div>
-                        <div class="absolute bottom-1/2 right-8 w-2.5 h-2.5 bg-orange-500 rounded-full"></div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4 mt-6">
-                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200/80">
-                            <span class="text-slate-400 text-xs font-bold uppercase tracking-wide block">Max Speeds</span>
-                            <span class="text-slate-900 text-lg font-black">Up to 35+ MPH</span>
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200/80">
-                            <span class="text-slate-400 text-xs font-bold uppercase tracking-wide block">Blade Width</span>
-                            <span class="text-slate-900 text-lg font-black">1.1mm to 1.4mm</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tab: Secure Admin Control Panel -->
-        <section id="tab-admin" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <!-- Admin Lock Screen -->
-            <div id="admin-lock-screen" class="max-w-md mx-auto bg-white p-8 rounded-2xl border border-slate-200 text-center shadow-xl">
-                <div class="bg-teal-500/10 p-4 rounded-full text-teal-600 w-16 h-16 mx-auto flex items-center justify-center mb-6">
-                    <i class="fa-solid fa-lock text-2xl"></i>
-                </div>
-                <h2 class="text-2xl font-bold text-slate-900 mb-2">Admin Authentication</h2>
-                <p class="text-slate-500 text-sm mb-6">Enter non-profit administrator credentials to manage events and registrant rosters.</p>
-                
-                <form id="admin-auth-form" onsubmit="handleAdminAuth(event)">
-                    <div class="space-y-4">
-                        <input type="password" id="admin-passcode" placeholder="Enter Access Code (Hint: admin123)" required
-                               class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3.5 text-center tracking-widest text-slate-900 placeholder:tracking-normal focus:outline-none focus:ring-1 focus:ring-teal-500 text-lg">
-                        <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-teal-500 to-orange-500 hover:from-teal-600 hover:to-orange-600 text-white font-bold rounded-xl shadow-md transition-all transform hover:-translate-y-0.5">
-                            Unlock Portal
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Admin Active Panel -->
-            <div id="admin-active-panel" class="hidden space-y-12">
-                <!-- Header with Action Stats & Controls -->
-                <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-200 pb-8 gap-4">
-                    <div>
-                        <h2 class="text-3xl font-extrabold text-slate-900 flex items-center space-x-3">
-                            <span>Admin Console</span>
-                            <span class="text-xs tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-200 px-2.5 py-1 rounded-full uppercase font-bold">Authorized Session</span>
-                        </h2>
-                        <p class="text-slate-500 mt-2">Manage schedules, track registrations, monitor fundraising, and export community rosters.</p>
-                    </div>
-                    <div class="flex space-x-3">
-                        <button onclick="logoutAdmin()" class="px-5 py-2.5 bg-white hover:bg-slate-50 border border-slate-200 text-slate-600 hover:text-slate-950 rounded-lg text-sm font-bold transition-all shadow-sm">
-                            Exit Admin Session
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Admin Dashboard Overview metrics -->
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
-                        <span class="text-slate-400 text-xs uppercase font-extrabold tracking-wider block">Scheduled Events</span>
-                        <span class="text-3xl font-extrabold text-slate-900 block mt-2" id="stat-total-events">0</span>
-                    </div>
-                    <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
-                        <span class="text-slate-400 text-xs uppercase font-extrabold tracking-wider block">Registrations</span>
-                        <span class="text-3xl font-extrabold text-slate-900 block mt-2" id="stat-total-signups">0</span>
-                    </div>
-                    <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
-                        <span class="text-slate-400 text-xs uppercase font-extrabold tracking-wider block">Mailing List</span>
-                        <span class="text-3xl font-extrabold text-slate-900 block mt-2" id="stat-total-subs">0</span>
-                    </div>
-                    <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
-                        <span class="text-slate-400 text-xs uppercase font-extrabold tracking-wider block">Funds Raised</span>
-                        <span class="text-3xl font-extrabold text-teal-600 block mt-2" id="stat-total-raised">$0</span>
-                    </div>
-                </div>
-
-                <!-- Admin Action Panels -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <!-- Create/Post New Event Form -->
-                    <div class="lg:col-span-5 bg-white border border-slate-200 p-6 rounded-2xl h-fit shadow-sm">
-                        <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center space-x-2">
-                            <i class="fa-solid fa-calendar-plus text-teal-500"></i>
-                            <span>Post New Speed Skating Event</span>
-                        </h3>
-                        <form id="post-event-form" onsubmit="handlePostEvent(event)" class="space-y-4">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Event Title</label>
-                                <input type="text" id="ev-title" required placeholder="e.g., Youth Short Track Basics"
-                                       class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-1 focus:ring-teal-500 text-sm">
-                            </div>
-                            
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Date</label>
-                                    <input type="date" id="ev-date" required
-                                           class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-1 focus:ring-teal-500 text-sm">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Time</label>
-                                    <input type="time" id="ev-time" required
-                                           class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-1 focus:ring-teal-500 text-sm">
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Category</label>
-                                    <select id="ev-category" required
-                                            class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-1 focus:ring-teal-500 text-sm">
-                                        <option value="Clinic">Coaching Clinic</option>
-                                        <option value="Meet">Race Meet</option>
-                                        <option value="Community">Community Skate</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Capacity</label>
-                                    <input type="number" id="ev-capacity" required min="5" placeholder="30"
-                                           class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-1 focus:ring-teal-500 text-sm">
-                                </div>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Rink Location</label>
-                                <input type="text" id="ev-location" required placeholder="e.g., Oakland Ice Center, Main Rink"
-                                       class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-1 focus:ring-teal-500 text-sm">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Event Description</label>
-                                <textarea id="ev-description" required rows="3" placeholder="Describe requirements, skate rentals and goals..."
-                                          class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-1 focus:ring-teal-500 text-sm"></textarea>
-                            </div>
-
-                            <button type="submit" class="w-full py-3.5 bg-teal-500 hover:bg-teal-600 text-white font-bold rounded-xl shadow-md transform hover:-translate-y-0.5 transition-all text-sm">
-                                <i class="fa-solid fa-plus mr-1.5"></i>Publish Event
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- Active Records & Rosters Tables -->
-                    <div class="lg:col-span-7 space-y-8">
-                        <!-- Active Schedule Management -->
-                        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
-                            <h3 class="text-xl font-bold text-slate-900 mb-4">Active Schedule Management</h3>
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-left border-collapse font-sans">
-                                    <thead>
-                                        <tr class="border-b border-slate-200 text-slate-400 text-xs font-bold uppercase tracking-wider">
-                                            <th class="py-3 px-4">Event Details</th>
-                                            <th class="py-3 px-4">Cap</th>
-                                            <th class="py-3 px-4 text-right">Control</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="admin-events-tbody" class="text-sm">
-                                        <!-- Built dynamically -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <!-- Fundraising Donor Ledger -->
-                        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
-                            <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center justify-between">
-                                <span>Donation Pledges</span>
-                                <span class="text-xs font-bold px-2.5 py-1 bg-slate-50 rounded border border-slate-200 text-slate-500 cursor-pointer hover:text-slate-900 hover:bg-slate-100 transition-colors" onclick="downloadDonors()">
-                                    <i class="fa-solid fa-file-export mr-1"></i>Copy CSV Format
-                                </span>
-                            </h3>
-                            <div class="overflow-x-auto max-h-80 overflow-y-auto">
-                                <table class="w-full text-left border-collapse">
-                                    <thead>
-                                        <tr class="border-b border-slate-200 text-slate-400 text-xs font-bold uppercase tracking-wider">
-                                            <th class="py-3 px-4">Donor Details</th>
-                                            <th class="py-3 px-4">Designated Tier</th>
-                                            <th class="py-3 px-4 text-right">Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="admin-donations-tbody" class="text-sm">
-                                        <!-- Built dynamically -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <!-- Sign-Up Roster Table -->
-                        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
-                            <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center justify-between">
-                                <span>Sign-up Roster</span>
-                                <span class="text-xs font-bold px-2.5 py-1 bg-slate-50 rounded border border-slate-200 text-slate-500 cursor-pointer hover:text-slate-900 hover:bg-slate-100 transition-colors" onclick="downloadRoster()">
-                                    <i class="fa-solid fa-file-export mr-1"></i>Copy CSV Format
-                                </span>
-                            </h3>
-                            <div class="overflow-x-auto max-h-80 overflow-y-auto">
-                                <table class="w-full text-left border-collapse">
-                                    <thead>
-                                        <tr class="border-b border-slate-200 text-slate-400 text-xs font-bold uppercase tracking-wider">
-                                            <th class="py-3 px-4">Skater Name</th>
-                                            <th class="py-3 px-4">Contact Info</th>
-                                            <th class="py-3 px-4">Event Track</th>
-                                            <th class="py-3 px-4">Level</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="admin-registrants-tbody" class="text-sm">
-                                        <!-- Built dynamically -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <!-- Newsletter Subscribers Table -->
-                        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
-                            <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center justify-between">
-                                <span>Newsletter Mailing Pool</span>
-                                <span class="text-xs font-bold px-2.5 py-1 bg-slate-50 rounded border border-slate-200 text-slate-500 cursor-pointer hover:text-slate-900 hover:bg-slate-100 transition-colors" onclick="downloadSubscribers()">
-                                    <i class="fa-solid fa-file-export mr-1"></i>Copy List
-                                </span>
-                            </h3>
-                            <div class="overflow-x-auto max-h-60 overflow-y-auto">
-                                <table class="w-full text-left border-collapse">
-                                    <thead>
-                                        <tr class="border-b border-slate-200 text-slate-400 text-xs font-bold uppercase tracking-wider">
-                                            <th class="py-3 px-4">Email Address</th>
-                                            <th class="py-3 px-4">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="admin-subscribers-tbody" class="text-sm">
-                                        <!-- Built dynamically -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Unified Skate Registration Modal -->
-    <div id="registration-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
-        <div class="min-h-screen px-4 text-center flex items-center justify-center">
-            <!-- Modal overlay -->
-            <div class="fixed inset-0 bg-slate-900/60 transition-opacity backdrop-blur-sm" onclick="closeRegistrationModal()"></div>
-
-            <!-- Modal Content Container -->
-            <div class="inline-block w-full max-w-lg p-8 my-8 overflow-hidden text-left align-middle transition-all transform bg-white border border-slate-200 shadow-2xl rounded-3xl relative z-10">
-                <button onclick="closeRegistrationModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 p-2">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
-
-                <div class="mb-6">
-                    <span class="text-xs font-bold tracking-widest text-teal-600 uppercase">Event Registration</span>
-                    <h3 class="text-2xl font-bold text-slate-950 mt-1" id="reg-modal-title">Join Skate Session</h3>
-                    <p class="text-slate-500 text-xs mt-1" id="reg-modal-datetime">Arena location & schedule information</p>
-                </div>
-
-                <form id="registration-form" onsubmit="submitRegistration(event)" class="space-y-4">
-                    <input type="hidden" id="reg-event-id">
-                    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">First Name</label>
-                            <input type="text" id="reg-firstname" required placeholder="John"
-                                   class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Last Name</label>
-                            <input type="text" id="reg-lastname" required placeholder="Doe"
-                                   class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none text-sm">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Email Address</label>
-                        <input type="email" id="reg-email" required placeholder="john.doe@example.com"
-                               class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none text-sm">
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Skater Age Group</label>
-                            <select id="reg-age" required
-                                    class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none text-sm">
-                                <option value="Youth (5-12)">Youth (5-12)</option>
-                                <option value="Teen (13-17)">Teen (13-17)</option>
-                                <option value="Adult (18+)">Adult (18+)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Experience Level</label>
-                            <select id="reg-level" required
-                                    class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none text-sm">
-                                <option value="First-Timer">First-Timer on Ice</option>
-                                <option value="Intermediate">Comfortable Gliding</option>
-                                <option value="Advanced/Competitive">Racer / Club Athlete</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Do you need rental Speed Skates?</label>
-                        <select id="reg-skates" required
-                                class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3 text-slate-900 focus:outline-none text-sm">
-                            <option value="No - Bringing own skates">No, bringing own specialized blades</option>
-                            <option value="Yes - Size US 5-7">Yes, need Speed Skates (US 5-7)</option>
-                            <option value="Yes - Size US 8-10">Yes, need Speed Skates (US 8-10)</option>
-                            <option value="Yes - Size US 11+">Yes, need Speed Skates (US 11+)</option>
-                        </select>
-                        <p class="text-[10px] text-slate-400 mt-1 font-semibold">Note: We lease professional speed skating blades free of charge for non-profit participants.</p>
-                    </div>
-
-                    <button type="submit" class="w-full mt-2 py-3.5 bg-gradient-to-r from-teal-500 to-orange-500 hover:from-teal-600 hover:to-orange-600 text-white font-bold rounded-xl shadow-lg">
-                        Confirm Registration
-                    </button>
-                </form>
-            </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Footer and Newsletter Section (Clean, Off-White Contrast) -->
-    <footer id="newsletter" class="bg-slate-100 border-t border-slate-200 pt-16 pb-12 mt-12 text-slate-700">
+      <!-- Feature Highlight / Values Section -->
+      <div class="bg-white border-y border-slate-100 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-12 border-b border-slate-200">
-                <!-- Org Details -->
-                <div class="lg:col-span-5 space-y-4">
-                    <div class="flex items-center space-x-3">
-                        <div class="bg-teal-500 p-2 rounded-xl text-white shadow-sm">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                        </div>
-                        <span class="text-xl font-black uppercase tracking-wider text-slate-900">BAY AREA <span class="text-teal-600">SKATE</span></span>
-                    </div>
-                    <p class="text-slate-600 text-sm leading-relaxed max-w-sm">
-                        Bay Area Speed Skating Inc is a dedicated 501(c)(3) amateur sports organization pushing the boundaries of West Coast youth ice athletics and speed disciplines.
-                    </p>
-                    <div class="text-xs text-slate-400 space-y-1">
-                        <p class="font-bold text-slate-500">Tax ID / EIN: <span class="font-mono text-teal-600 font-bold">41-5160846</span></p>
-                        <p>© 2026 Bay Area Speed Skating Inc. All rights reserved.</p>
-                    </div>
-                </div>
-
-                <!-- Newsletter Subscription Form -->
-                <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <h4 class="text-lg font-bold text-slate-900 mb-2">Subscribe to our Training Dispatch</h4>
-                    <p class="text-slate-500 text-xs mb-6">Receive seasonal rink calendars, professional blade sharpening guides, and NorCal community impact logs.</p>
-                    <form id="newsletter-form" onsubmit="handleNewsletterSub(event)" class="sm:flex gap-3">
-                        <input type="email" id="news-email" required placeholder="Enter your email address"
-                               class="w-full bg-slate-50 border border-slate-200 focus:border-teal-500 rounded-xl px-4 py-3.5 text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-1 focus:ring-teal-500 mb-3 sm:mb-0">
-                        <button type="submit" class="w-full sm:w-auto px-6 py-3.5 bg-teal-500 hover:bg-teal-600 text-white font-bold rounded-xl text-sm transition-all shadow-md flex items-center justify-center space-x-1.5 whitespace-nowrap">
-                            <span>Keep Updated</span>
-                            <i class="fa-solid fa-paper-plane text-xs"></i>
-                        </button>
-                    </form>
-                </div>
+          <div class="text-center max-w-3xl mx-auto space-y-4">
+            <h2 class="text-3xl font-extrabold text-slate-900">Why Train with BASS?</h2>
+            <p class="text-slate-600">We train local athletes through community-supported tracks, providing safety gear, top-tier skate rentals, and Olympic-focused training protocols.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <!-- Card 1 -->
+            <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
+              <div class="w-12 h-12 rounded-xl bg-pacificTeal-50 flex items-center justify-center text-pacificTeal-600">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900">High-Performance Coaching</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">Structured regimens focusing on dry-land dynamic power, on-ice cornering, cross-over mechanics, and state-of-the-art endurance science.</p>
             </div>
-
-            <!-- Foot-Links -->
-            <div class="flex flex-col sm:flex-row justify-between items-center pt-8 text-xs text-slate-400">
-                <p class="font-semibold text-slate-500">Tax-Exempt Organization Status: 501(c)(3) Public Charity | EIN: 41-5160846.</p>
-                <div class="flex space-x-6 mt-4 sm:mt-0 font-bold">
-                    <a href="#home" onclick="switchTab('home')" class="hover:text-slate-800 transition-colors">Home</a>
-                    <a href="#events" onclick="switchTab('events')" class="hover:text-slate-800 transition-colors">Calendar</a>
-                    <a href="#support" onclick="switchTab('support')" class="hover:text-slate-800 text-teal-600 transition-colors">Donate</a>
-                    <a href="#about" onclick="switchTab('about')" class="hover:text-slate-800 transition-colors">Our Mission</a>
-                    <a href="#admin" onclick="switchTab('admin')" class="hover:text-slate-800 transition-colors">Admin Area</a>
-                </div>
+            <!-- Card 2 -->
+            <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
+              <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center text-sunsetOrange-500">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900">Accessible Athletics</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">As a registered 501(c)(3) nonprofit, we direct donations straight into equipment sponsorship pools and low-cost skate rentals for families.</p>
             </div>
+            <!-- Card 3 -->
+            <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
+              <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-poppyGold-500">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900">California Community</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">Connecting families, active master skaters, and young speed demons across San Francisco, Oakland, and San Jose ice facilities.</p>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
 
-    <!-- Main Application JavaScript Logic -->
-    <script>
-        // ----------------------------------------------------
-        // INITIAL DATASET STATE (IN-MEMORY STORES)
-        // ----------------------------------------------------
-        let state = {
-            events: [
-                {
-                    id: "ev-1",
-                    title: "Intro to Short Track Speed Skating",
-                    date: "2026-06-05",
-                    time: "09:00",
-                    location: "Oakland Ice Center, Main Rink",
-                    category: "Clinic",
-                    capacity: 25,
-                    currentSignups: 14,
-                    description: "Tailored for young skaters and newcomers. Learn aerodynamic crouch positioning, low-friction blade angles, and initial crossovers."
-                },
-                {
-                    id: "ev-2",
-                    title: "California Golden State Cup Trial",
-                    date: "2026-06-20",
-                    time: "14:00",
-                    location: "Solar4America Ice, San Jose",
-                    category: "Meet",
-                    capacity: 50,
-                    currentSignups: 42,
-                    description: "Annual NorCal Short Track competition meet. Sanctioned categories from Juniors to Masters. Features electronic precision timing."
-                },
-                {
-                    id: "ev-3",
-                    title: "San Francisco Community Open Speed Trial",
-                    date: "2026-07-12",
-                    time: "18:00",
-                    location: "Yerba Buena Ice Skating Center, SF",
-                    category: "Community",
-                    capacity: 100,
-                    currentSignups: 71,
-                    description: "Come experience custom racing blades! Check your maximum speeds via live laser timing, and consult with certified US Speedskating coaches."
-                }
-            ],
-            registrations: [
-                { id: "reg-1", eventId: "ev-1", firstName: "Alex", lastName: "Chen", email: "alex.chen@test.com", age: "Teen (13-17)", level: "Intermediate", skates: "Yes - Size US 8-10" },
-                { id: "reg-2", eventId: "ev-1", firstName: "Emma", lastName: "Rodriguez", email: "emma.rod@gmail.com", age: "Adult (18+)", level: "First-Timer", skates: "Yes - Size US 5-7" },
-                { id: "reg-3", eventId: "ev-2", firstName: "Lucas", lastName: "Manning", email: "lucas.m@manning.co", age: "Adult (18+)", level: "Advanced/Competitive", skates: "No - Bringing own skates" }
-            ],
-            donations: [
-                { id: "don-1", name: "Saratoga Precision Ice", email: "sponsor@saratogaice.org", amount: 500, tier: "Gold Medal Partner" },
-                { id: "don-2", name: "The Tanaka Family", email: "y.tanaka@sfbay.net", amount: 75, tier: "Full-Season Skate Lease" },
-                { id: "don-3", name: "Marcus Brody", email: "mbrody@berkeley.edu", amount: 150, tier: "Olympic Oval Ice Grant" }
-            ],
-            donationGoal: 10000,
-            subscribers: [
-                "skate_parent@comcast.net",
-                "tim.cooper@athletics.org",
-                "racer_lisa@fastmail.com"
-            ],
-            authenticated: false,
-            currentFilter: "all"
-        };
+      <!-- Quick Newsletter Subscription -->
+      <div class="max-w-4xl mx-auto px-4 my-16">
+        <div class="bg-gradient-to-r from-pacificTeal-600 to-sunsetOrange-600 rounded-3xl p-8 sm:p-12 text-white text-center space-y-6 shadow-xl relative overflow-hidden">
+          <div class="absolute -right-20 -top-20 w-60 h-60 rounded-full border border-white/10"></div>
+          <div class="absolute -left-25 -bottom-25 w-60 h-60 rounded-full border border-white/10"></div>
+          
+          <h3 class="text-3xl font-extrabold tracking-tight">Stay Updated on Race Track Schedules</h3>
+          <p class="text-white/80 max-w-lg mx-auto text-sm leading-relaxed">
+            Subscribe to the Bay Area Speed Skating news. Receive monthly track slot bookings, registration discounts, and clinics info directly.
+          </p>
+          <form onsubmit="handleNewsletterSubmit(event)" class="max-w-md mx-auto flex flex-col sm:flex-row gap-3 relative z-10">
+            <input type="email" id="newsletter-email" placeholder="Your email address" required 
+              class="w-full px-5 py-3.5 rounded-xl text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-poppyGold-400 font-medium">
+            <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition-transform hover:scale-105 active:scale-95 whitespace-nowrap">
+              Subscribe Free
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
 
-        // Initialize state on window load
-        window.onload = function () {
-            renderPublicEvents();
-            renderFundraising();
-            updateStats();
+    <!-- TAB: EVENTS -->
+    <section id="tab-events" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div class="space-y-2">
+          <span class="text-sm font-semibold text-pacificTeal-600 uppercase tracking-widest block">Active Calendar</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Upcoming Meets, Camps & Clinics</h2>
+          <p class="text-slate-600 max-w-xl">Register online to lock in your spot. Safety gear is available for rental during registration checkouts.</p>
+        </div>
+        <div class="flex items-center gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200 self-start md:self-auto">
+          <button onclick="filterEvents('all')" id="btn-filter-all" class="px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-800 shadow-sm transition-all">All</button>
+          <button onclick="filterEvents('open')" id="btn-filter-open" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all">Open Spots</button>
+        </div>
+      </div>
+
+      <div id="events-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Event Cards will be dynamically injected here via JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB: SUPPORT / FUNDRAISING -->
+    <section id="tab-support" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left Column -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="space-y-3">
+            <span class="text-sm font-semibold text-sunsetOrange-500 uppercase tracking-widest block">Community Investment</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Support Northern California Speed Skating</h2>
+            <p class="text-slate-600 leading-relaxed">
+              Every tax-deductible dollar donated to Bay Area Speed Skating Inc. provides rental gear, subsidizes professional ice rental fees, and funds community scholarships for youth athletes.
+            </p>
+          </div>
+
+          <!-- Official EIN Non-Profit Badge -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-start gap-4 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50/50 rounded-full -mr-10 -mt-10 border border-amber-100"></div>
+            <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-500 flex-shrink-0">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <div class="space-y-1 relative z-10">
+              <span class="text-xs font-bold text-sunsetOrange-500 uppercase tracking-wider">IRS Registered Public Charity</span>
+              <h4 class="text-lg font-bold text-slate-900">Official Non-Profit Registration Info</h4>
+              <p class="text-sm text-slate-600">
+                Registered Legal entity name: <strong class="text-slate-800">Bay Area Speed Skating Inc.</strong><br>
+                Federal EIN: <strong class="text-slate-900 underline font-mono select-all">41-5160846</strong><br>
+                Tax Status: <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-0.5 rounded-full font-semibold inline-block mt-1">501(c)(3) Tax Exempt</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Dynamic Live Fundraising Progress Gauge -->
+          <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="block text-sm font-semibold text-slate-500 uppercase">Seasonal Support Campaign</span>
+                <span class="text-2xl font-extrabold text-slate-900" id="fund-raised-label">$650 Raised</span>
+              </div>
+              <div class="text-right">
+                <span class="block text-sm font-semibold text-slate-500 uppercase">Goal</span>
+                <span class="text-2xl font-extrabold text-slate-500" id="fund-goal-label">$10,000</span>
+              </div>
+            </div>
+
+            <div class="w-full bg-slate-100 h-4 rounded-full overflow-hidden p-0.5 border border-slate-200/50">
+              <div id="fund-progress-bar" class="h-full bg-gradient-to-r from-pacificTeal-500 via-sunsetOrange-500 to-poppyGold-500 rounded-full shadow-inner transition-all duration-700" style="width: 6.5%;"></div>
+            </div>
+            <p class="text-xs text-slate-500 flex items-center gap-1.5 justify-center">
+              <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Live simulated campaign tracking. Your pledge is formatted for community bookkeeping.
+            </p>
+          </div>
+
+          <!-- Preset Support Selection -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-bold text-slate-900">How Your Support Fuels California Athletes:</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div onclick="selectPresetDonation(25)" class="p-4 rounded-xl border-2 border-slate-200 hover:border-pacificTeal-500 bg-white hover:bg-pacificTeal-50/30 cursor-pointer transition-all space-y-1">
+                <span class="text-xl font-bold text-pacificTeal-600">$25</span>
+                <h4 class="font-bold text-sm text-slate-900">Skate Guard Shield</h4>
+                <p class="text-xs text-slate-500">Buys safety training cones and speed skate guard covers for younger athletes.</p>
+              </div>
+              <div onclick="selectPresetDonation(75)" class="p-4 rounded-xl border-2 border-slate-200 hover:border-pacificTeal-500 bg-white hover:bg-pacificTeal-50/30 cursor-pointer transition-all space-y-1">
+                <span class="text-xl font-bold text-pacificTeal-600">$75</span>
+                <h4 class="font-bold text-sm text-slate-900">Skate Care & Blade Sharpening</h4>
+                <p class="text-xs text-slate-500">Funds precision diamond stones and hand jig rigs to keep student skater blades razor-sharp.</p>
+              </div>
+              <div onclick="selectPresetDonation(150)" class="p-4 rounded-xl border-2 border-slate-200 hover:border-pacificTeal-500 bg-white hover:bg-pacificTeal-50/30 cursor-pointer transition-all space-y-1">
+                <span class="text-xl font-bold text-pacificTeal-600">$150</span>
+                <h4 class="font-bold text-sm text-slate-900">Safety Gear Package</h4>
+                <p class="text-xs text-slate-500">Supplies premium cut-resistant Kevlar neck guards, gloves, and protective helmets.</p>
+              </div>
+              <div onclick="selectPresetDonation(500)" class="p-4 rounded-xl border-2 border-slate-200 hover:border-pacificTeal-500 bg-white hover:bg-pacificTeal-50/30 cursor-pointer transition-all space-y-1">
+                <span class="text-xl font-bold text-pacificTeal-600">$500</span>
+                <h4 class="font-bold text-sm text-slate-900">Championship Sponsor</h4>
+                <p class="text-xs text-slate-500">Subsidizes track oval booking costs for weekend community race meets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Donation Form Panel -->
+        <div class="lg:col-span-5">
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-md sticky top-24 space-y-6">
+            <div class="border-b border-slate-100 pb-4">
+              <h3 class="text-xl font-bold text-slate-900">Simulate Pledge Donation</h3>
+              <p class="text-sm text-slate-500">Select an amount or specify your custom contribution.</p>
+            </div>
+
+            <form onsubmit="handleDonationSubmit(event)" class="space-y-4">
+              <div>
+                <label class="block text-sm font-semibold text-slate-600 mb-1.5">Contribution Amount ($)</label>
+                <div class="relative">
+                  <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
+                  <input type="number" id="donation-amount" placeholder="0" min="5" required 
+                    class="w-full pl-8 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-pacificTeal-500 font-bold text-lg">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-slate-600 mb-1.5">Full Name</label>
+                <input type="text" id="donation-name" placeholder="Robert Blitzer" required 
+                  class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-pacificTeal-500 text-sm">
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-slate-600 mb-1.5">Email Address</label>
+                <input type="email" id="donation-email" placeholder="rblitzer@gmail.com" required 
+                  class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-pacificTeal-500 text-sm">
+              </div>
+
+              <div class="pt-2">
+                <button type="submit" class="w-full bg-gradient-to-r from-pacificTeal-600 to-sunsetOrange-500 hover:from-pacificTeal-700 hover:to-sunsetOrange-600 text-white font-bold py-4 rounded-xl shadow-md transition-transform hover:scale-[1.01] active:scale-95 text-center">
+                  Confirm Simulated Donation Pledge
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-white border-t border-slate-800 pt-16 pb-12 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-slate-800 pb-12 mb-8">
+      
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-pacificTeal-500 to-poppyGold-400 p-[1.5px]">
+            <div class="w-full h-full bg-slate-900 rounded-[7px] flex items-center justify-center">
+              <svg class="w-5 h-5 text-pacificTeal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+          </div>
+          <span class="font-bold text-lg tracking-tight">Bay Area Speed Skating</span>
+        </div>
+        <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+          Fostering technical performance, inclusion, and dynamic fitness through short-track and long-track speed skating on the West Coast.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-200">Public Portal</h4>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li><button onclick="switchTab('home')" class="hover:text-pacificTeal-500 transition-colors">Home Landing</button></li>
+          <li><button onclick="switchTab('events')" class="hover:text-pacificTeal-500 transition-colors">Upcoming Meets</button></li>
+          <li><button onclick="switchTab('support')" class="hover:text-pacificTeal-500 transition-colors">Tax-Exempt Contributions</button></li>
+        </ul>
+      </div>
+
+      <div class="space-y-4">
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-200">Non-Profit Certification</h4>
+        <div class="text-sm text-slate-400 space-y-1.5">
+          <p>Federal EIN: <span class="text-slate-200 font-mono select-all font-semibold">41-5160846</span></p>
+          <p>Tax Exemption: <span class="text-emerald-400 font-semibold">501(c)(3) Public Charity</span></p>
+          <p class="text-xs text-slate-500 italic mt-2">BASS is fully authorized to issue formal donor-acknowledgment letters for all simulated seasonal pledges.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hidden Door Activation: Click Copyright Text 5 Times -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <p id="footer-copyright" class="cursor-pointer hover:text-slate-400 transition-colors select-none font-medium">
+        &copy; 2026 Bay Area Speed Skating Inc. All rights reserved.
+      </p>
+      <div class="flex items-center gap-4">
+        <span class="bg-slate-800 text-slate-400 px-3 py-1 rounded-full border border-slate-700/50">San Francisco, CA</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL: SKATER REGISTRATION -->
+  <div id="modal-registration" class="hidden fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden border border-slate-200">
+      <div class="bg-gradient-to-r from-pacificTeal-600 to-sunsetOrange-500 p-6 text-white relative">
+        <h3 class="text-xl font-bold">Register to Skate</h3>
+        <p class="text-xs text-white/95 mt-1">Submit your name below to register for any scheduled open track event.</p>
+        <button onclick="closeRegistrationModal()" class="absolute top-5 right-5 p-1 rounded-full bg-white/10 hover:bg-white/25 text-white transition-colors">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form onsubmit="handleRegistrationSubmit(event)" class="p-6 space-y-4">
+        <div>
+          <label class="block text-sm font-semibold text-slate-600 mb-1.5">Target Speed Event</label>
+          <select id="reg-event-select" required 
+            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-pacificTeal-500 text-sm font-medium">
+          </select>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold text-slate-600 mb-1.5">Athlete Full Name</label>
+            <input type="text" id="reg-name" placeholder="Chloe Chen" required 
+              class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-pacificTeal-500 text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-600 mb-1.5">Athlete Age</label>
+            <input type="number" id="reg-age" placeholder="18" min="5" max="99" required 
+              class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-pacificTeal-500 text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-slate-600 mb-1.5">Parent / Contact Email Address</label>
+          <input type="email" id="reg-email" placeholder="skater.mom@example.com" required 
+            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-pacificTeal-500 text-sm">
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-slate-600 mb-1.5">Experience Tier</label>
+          <select id="reg-category" required 
+            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-pacificTeal-500 text-sm font-medium">
+            <option value="Novice (No Speed Gear Yet)">Novice (No Speed Gear Yet)</option>
+            <option value="Junior A (Age under 15)">Junior A (Age under 15)</option>
+            <option value="Junior B (Age 15-19)">Junior B (Age 15-19)</option>
+            <option value="Senior Competitor">Senior Competitor</option>
+            <option value="Masters (Ages 30+)">Masters (Ages 30+)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-pacificTeal-600 to-sunsetOrange-500 text-white font-bold py-3.5 rounded-xl shadow-md transition-transform hover:scale-[1.01] active:scale-95 text-center text-sm">
+          Finalize My Entry
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- MODAL: HIDDEN ADMIN LOGIN (Access via #admin url or 5 copyright clicks) -->
+  <div id="modal-admin-auth" class="hidden fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden border border-slate-200">
+      <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <div>
+          <h3 class="text-xl font-bold text-slate-900">Admin Authorization Portal</h3>
+          <p class="text-xs text-slate-500">Security Gate for Bay Area Speed Skating Inc.</p>
+        </div>
+        <button onclick="closeAdminAuthModal()" class="p-2 rounded-full hover:bg-slate-200 text-slate-500 transition-colors">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="p-6 space-y-6">
+        <!-- Passcode Box -->
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700">Access Key Credentials</label>
+          <input type="password" id="admin-passcode-input" placeholder="Enter dashboard password" 
+            class="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl text-slate-900 text-center font-bold tracking-wider focus:outline-none focus:ring-2 focus:ring-pacificTeal-500">
+          <button onclick="verifyAdminPasscode()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl shadow transition-transform hover:scale-[1.01] text-sm">
+            Unlock Dashboard
+          </button>
+          <p class="text-[11px] text-center text-slate-400">Default Sandbox Key: <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-600 select-all font-semibold font-mono">admin123</code></p>
+        </div>
+
+        <div class="relative flex py-2 items-center">
+          <div class="flex-grow border-t border-slate-200"></div>
+          <span class="flex-shrink mx-4 text-xs font-bold text-slate-400 uppercase tracking-widest">or</span>
+          <div class="flex-grow border-t border-slate-200"></div>
+        </div>
+
+        <!-- Google Firebase authentication connector wrapper -->
+        <button onclick="simulateGoogleLogin()" class="w-full flex items-center justify-center gap-3 py-3 border-2 border-slate-200 hover:border-slate-300 rounded-xl bg-white hover:bg-slate-50 transition-all shadow-sm">
+          <svg class="w-5 h-5" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+          </svg>
+          <span class="text-sm font-semibold text-slate-700">Sign In with Google Admin</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SECURED ADMIN PANEL OVERLAY VIEW -->
+  <div id="panel-admin" class="hidden fixed inset-0 z-50 bg-slate-50 overflow-y-auto flex flex-col">
+    <!-- Admin Header -->
+    <header class="bg-slate-900 text-white py-4 px-6 sticky top-0 flex items-center justify-between shadow-md z-10">
+      <div class="flex items-center gap-3">
+        <span class="bg-sunsetOrange-500 text-white font-extrabold px-3 py-1 rounded-lg text-xs tracking-wider uppercase">Administrative Console</span>
+        <h2 class="text-xl font-bold tracking-tight text-white">BASS Dashboard</h2>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-xs text-slate-400 hidden sm:inline">User Token: <strong class="text-emerald-400 font-mono">rblitzer-authenticated</strong></span>
+        <button onclick="closeAdminPanel()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-colors">
+          Exit Admin Interface
+        </button>
+      </div>
+    </header>
+
+    <!-- Admin Content -->
+    <div class="max-w-7xl mx-auto w-full p-4 sm:p-6 lg:p-8 flex-grow space-y-8 pb-20">
+      
+      <!-- Stats Summary cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+          <span class="block text-xs font-bold text-slate-500 uppercase">Track Openings</span>
+          <span id="admin-kpi-events" class="block text-3xl font-extrabold text-slate-900">0</span>
+        </div>
+        <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+          <span class="block text-xs font-bold text-slate-500 uppercase">Skater Entrants</span>
+          <span id="admin-kpi-registrations" class="block text-3xl font-extrabold text-pacificTeal-600">0</span>
+        </div>
+        <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+          <span class="block text-xs font-bold text-slate-500 uppercase">Funds Pledged</span>
+          <span id="admin-kpi-donations" class="block text-3xl font-extrabold text-sunsetOrange-500">$0</span>
+        </div>
+        <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+          <span class="block text-xs font-bold text-slate-500 uppercase">Mailing Subscribers</span>
+          <span id="admin-kpi-subscribers" class="block text-3xl font-extrabold text-poppyGold-500">0</span>
+        </div>
+      </div>
+
+      <!-- Left / Right Grid Structure for Admin tools -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Post new Event -->
+        <div class="lg:col-span-5 bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-6">
+          <div>
+            <h3 class="text-lg font-bold text-slate-900">Post New Skate Event</h3>
+            <p class="text-xs text-slate-500">Scheduled sessions immediately refresh on public registration feeds.</p>
+          </div>
+
+          <form onsubmit="handleCreateEvent(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Event Title</label>
+              <input type="text" id="admin-event-title" placeholder="Sierra Inline Cup" required 
+                class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-pacificTeal-500">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Date</label>
+                <input type="text" id="admin-event-date" placeholder="October 14, 2026" required 
+                  class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-pacificTeal-500">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Time</label>
+                <input type="text" id="admin-event-time" placeholder="09:00 AM" required 
+                  class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-pacificTeal-500">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Location</label>
+                <input type="text" id="admin-event-location" placeholder="San Jose Arena" required 
+                  class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-pacificTeal-500">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Max Skaters</label>
+                <input type="number" id="admin-event-capacity" placeholder="25" min="5" required 
+                  class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-pacificTeal-500 font-bold">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Short Description</label>
+              <textarea id="admin-event-description" placeholder="A brief summary describing target ages and training focuses." required rows="3" 
+                class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-pacificTeal-500"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-pacificTeal-600 hover:bg-pacificTeal-700 text-white font-bold py-3 rounded-xl shadow transition-transform hover:scale-[1.01] text-xs uppercase tracking-wider">
+              Publish Event Publicly
+            </button>
+          </form>
+        </div>
+
+        <!-- Ledger logs -->
+        <div class="lg:col-span-7 space-y-8">
+          
+          <!-- Event list register -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Scheduled Events Register</h3>
+              <p class="text-xs text-slate-500">Review status capacities or remove event offerings.</p>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs">
+                <thead>
+                  <tr class="border-b border-slate-200 text-slate-500 font-bold">
+                    <th class="pb-3 pr-2">Event Detail</th>
+                    <th class="pb-3 pr-2">Location</th>
+                    <th class="pb-3 pr-2">Registrants</th>
+                    <th class="pb-3 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-table-events" class="divide-y divide-slate-100 font-medium text-slate-800">
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Athletes Ledger -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">Athlete Registrations Ledger</h3>
+                <p class="text-xs text-slate-500">Track competitor details, contact addresses, and age bands.</p>
+              </div>
+              <button onclick="exportCSV('registrants')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold transition-all">
+                Copy CSV Data
+              </button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs">
+                <thead>
+                  <tr class="border-b border-slate-200 text-slate-500 font-bold">
+                    <th class="pb-3 pr-2">Skater Name</th>
+                    <th class="pb-3 pr-2">Age / Division</th>
+                    <th class="pb-3 pr-2">Contact Email</th>
+                    <th class="pb-3">Event Match</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-table-registrants" class="divide-y divide-slate-100 font-medium text-slate-800">
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Donors Ledger -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">Support Pledges Register</h3>
+                <p class="text-xs text-slate-500">Detailed list of charitable community pledges supporting programs.</p>
+              </div>
+              <button onclick="exportCSV('donors')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold transition-all">
+                Copy CSV Data
+              </button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs">
+                <thead>
+                  <tr class="border-b border-slate-200 text-slate-500 font-bold">
+                    <th class="pb-3 pr-2">Donor Name</th>
+                    <th class="pb-3 pr-2">Sponsorship Level</th>
+                    <th class="pb-3 pr-2">Email</th>
+                    <th class="pb-3 text-right">Amount Pledged</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-table-donors" class="divide-y divide-slate-100 font-medium text-slate-800">
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Subscribers Ledger -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">Mailing List Subscribers</h3>
+                <p class="text-xs text-slate-500">Authorized email accounts registered for local event notifications.</p>
+              </div>
+              <button onclick="exportCSV('subscribers')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold transition-all">
+                Copy CSV Data
+              </button>
+            </div>
+            <div class="overflow-x-auto max-h-60 overflow-y-auto">
+              <table class="w-full text-left text-xs">
+                <thead>
+                  <tr class="border-b border-slate-200 text-slate-500 font-bold">
+                    <th class="pb-3 pr-2">Subscriber Email</th>
+                    <th class="pb-3">Subscribed On</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-table-subscribers" class="divide-y divide-slate-100 font-medium text-slate-800">
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SCRIPTING BEHAVIORS AND STATE REDUCERS -->
+  <script>
+    // State Memory Engine (In-Memory database)
+    const state = {
+      events: [
+        { id: 1, title: 'Golden State Short Track Open', date: 'July 18, 2026', time: '08:00 AM', location: 'Oakland Ice Center', slots: 30, registered: 12, description: 'The premier summer short track speed skating meet in Northern California.' },
+        { id: 2, title: 'Sutro Heights Outdoor Time Trial', date: 'August 05, 2026', time: '09:30 AM', location: 'Sutro Heights Outdoor Oval', slots: 20, registered: 8, description: 'An outdoor inline and ice speed trial event prioritizing technique and raw cadence.' },
+        { id: 3, title: 'Pacific Coast Ice Academy Camp', date: 'September 12, 2026', time: '10:00 AM', location: 'San Jose Ice Arena', slots: 40, registered: 22, description: 'A 3-day development camp featuring specialized technique coaching and turn drills.' }
+      ],
+      registrants: [
+        { name: 'Chloe Chen', email: 'chloe.chen@example.com', eventId: 1, skaterAge: 14, category: 'Junior A (Age under 15)' },
+        { name: 'Marcus Miller', email: 'marcus.m@example.com', eventId: 1, skaterAge: 24, category: 'Senior Competitor' },
+        { name: 'Sarah Jenkins', email: 'sjenkins@example.com', eventId: 3, skaterAge: 19, category: 'Junior B (Age 15-19)' }
+      ],
+      subscribers: [
+        { email: 'skater_mom@example.com', date: '2026-05-10' },
+        { email: 'fast_ice@example.com', date: '2026-05-15' },
+        { email: 'norcal_coach@example.com', date: '2026-05-20' }
+      ],
+      donations: [
+        { name: 'Robert Blitzer', email: 'rblitzer@example.com', amount: 500, tier: 'Championship Sponsor', date: '2026-05-24' },
+        { name: 'Alice Wong', email: 'alice.w@example.com', amount: 150, tier: 'Safety Gear Package', date: '2026-05-25' }
+      ],
+      fundraisingGoal: 10000,
+      currentFilter: 'all'
+    };
+
+    window.addEventListener('load', () => {
+      renderAll();
+      checkHash();
+    });
+
+    window.addEventListener('hashchange', checkHash);
+
+    function checkHash() {
+      if (window.location.hash === '#admin') {
+        openAdminAuthModal();
+      }
+    }
+
+    // Secret entry: 5 clicks on footer copyright
+    let secretClickCounter = 0;
+    document.getElementById('footer-copyright').addEventListener('click', () => {
+      secretClickCounter++;
+      if (secretClickCounter >= 5) {
+        secretClickCounter = 0;
+        openAdminAuthModal();
+        showToast("Welcome Administrator! Verification screen loaded.", "info");
+      } else if (secretClickCounter >= 3) {
+        showToast(`Secret Gate: Click ${5 - secretClickCounter} more times to load authorization panel.`, "info");
+      }
+    });
+
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      
+      const colors = {
+        success: 'bg-emerald-600 text-white',
+        error: 'bg-red-600 text-white',
+        info: 'bg-pacificTeal-600 text-white'
+      };
+
+      toast.className = `p-4 rounded-xl shadow-lg flex items-center justify-between gap-3 text-sm font-semibold transform translate-y-2 opacity-0 transition-all duration-300 ${colors[type]}`;
+      toast.innerHTML = `
+        <span>${message}</span>
+        <button class="font-bold opacity-75 hover:opacity-100">&times;</button>
+      `;
+
+      toast.querySelector('button').onclick = () => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      };
+
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.classList.remove('opacity-0', 'translate-y-2');
+      }, 50);
+
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.classList.add('opacity-0', 'translate-y-2');
+          setTimeout(() => toast.remove(), 300);
         }
+      }, 4000);
+    }
 
-        // ----------------------------------------------------
-        // TAB SWAPPING UTILITY
-        // ----------------------------------------------------
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(element => {
-                element.classList.add('hidden');
-            });
-            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
-
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('text-teal-600', 'bg-teal-500/10');
-                link.classList.add('text-slate-600');
-                if (link.getAttribute('data-tab') === tabName) {
-                    link.classList.add('text-teal-600', 'bg-teal-500/10');
-                    link.classList.remove('text-slate-600');
-                }
-            });
-
-            document.querySelectorAll('[data-tab-mobile]').forEach(link => {
-                link.classList.remove('text-teal-600', 'bg-teal-50');
-                link.classList.add('text-slate-700');
-                if (link.getAttribute('data-tab-mobile') === tabName) {
-                    link.classList.add('text-teal-600', 'bg-teal-50');
-                }
-            });
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            document.getElementById('mobile-menu').classList.add('hidden');
+    function switchTab(tabId) {
+      const tabs = ['home', 'events', 'support'];
+      tabs.forEach(tab => {
+        const el = document.getElementById(`tab-${tab}`);
+        const navEl = document.getElementById(`nav-${tab}`);
+        if (tab === tabId) {
+          el.classList.remove('hidden');
+          el.classList.add('block');
+          navEl.classList.add('text-pacificTeal-600', 'border-b-2', 'border-pacificTeal-500');
+          navEl.classList.remove('text-slate-600');
+        } else {
+          el.classList.remove('block');
+          el.classList.add('hidden');
+          navEl.classList.remove('text-pacificTeal-600', 'border-b-2', 'border-pacificTeal-500');
+          navEl.classList.add('text-slate-600');
         }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      toggleMobileMenu();
+    });
+
+    function openAdminAuthModal() {
+      document.getElementById('modal-admin-auth').classList.remove('hidden');
+    }
+
+    function closeAdminAuthModal() {
+      document.getElementById('modal-admin-auth').classList.add('hidden');
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+
+    function openRegistrationModal(targetEventId = null) {
+      const select = document.getElementById('reg-event-select');
+      select.innerHTML = '';
+      
+      state.events.forEach(ev => {
+        const spotsLeft = ev.slots - ev.registered;
+        if (spotsLeft > 0) {
+          const opt = document.createElement('option');
+          opt.value = ev.id;
+          opt.textContent = `${ev.title} (${spotsLeft} spots remaining)`;
+          if (targetEventId && ev.id == targetEventId) {
+            opt.selected = true;
+          }
+          select.appendChild(opt);
+        }
+      });
+
+      if (select.children.length === 0) {
+        showToast("All scheduled events are currently fully booked!", "info");
+        return;
+      }
+
+      document.getElementById('modal-registration').classList.remove('hidden');
+    }
+
+    function closeRegistrationModal() {
+      document.getElementById('modal-registration').classList.add('hidden');
+    }
+
+    function verifyAdminPasscode() {
+      const pin = document.getElementById('admin-passcode-input').value;
+      if (pin === 'admin123') {
+        closeAdminAuthModal();
+        document.getElementById('admin-passcode-input').value = '';
+        openAdminPanel();
+      } else {
+        showToast("Invalid administrative access key credential.", "error");
+      }
+    }
+
+    function simulateGoogleLogin() {
+      showToast("Requesting Google Auth connection handshake...", "info");
+      setTimeout(() => {
+        showToast("Access Granted: Admin account 'rblitzer@gmail.com' verified.", "success");
+        closeAdminAuthModal();
+        openAdminPanel();
+      }, 1200);
+    }
+
+    function openAdminPanel() {
+      document.getElementById('panel-admin').classList.remove('hidden');
+      renderAdmin();
+    }
+
+    function closeAdminPanel() {
+      document.getElementById('panel-admin').classList.add('hidden');
+    }
+
+    function filterEvents(category) {
+      state.currentFilter = category;
+      const allBtn = document.getElementById('btn-filter-all');
+      const openBtn = document.getElementById('btn-filter-open');
+      
+      if (category === 'all') {
+        allBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-800 shadow-sm transition-all";
+        openBtn.className = "px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all";
+      } else {
+        openBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-800 shadow-sm transition-all";
+        allBtn.className = "px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all";
+      }
+      renderEventsList();
+    }
+
+    function selectPresetDonation(val) {
+      document.getElementById('donation-amount').value = val;
+      showToast(`Selected the $${val} Preset Campaign tier.`, "info");
+    }
+
+    function handleDonationSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('donation-name').value.trim();
+      const email = document.getElementById('donation-email').value.trim();
+      const val = parseFloat(document.getElementById('donation-amount').value);
+
+      let level = "Skate Supporter";
+      if (val >= 500) level = "Championship Sponsor";
+      else if (val >= 150) level = "Safety Gear Package";
+      else if (val >= 75) level = "Skate Sharpening Companion";
+
+      state.donations.unshift({
+        name: name,
+        email: email,
+        amount: val,
+        tier: level,
+        date: new Date().toISOString().split('T')[0]
+      });
+
+      document.getElementById('donation-name').value = '';
+      document.getElementById('donation-email').value = '';
+      document.getElementById('donation-amount').value = '';
+
+      showToast(`Thank you, ${name}! Your simulated pledge of $${val} was documented.`, "success");
+      renderAll();
+    }
+
+    function handleRegistrationSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('reg-name').value.trim();
+      const age = parseInt(document.getElementById('reg-age').value);
+      const email = document.getElementById('reg-email').value.trim();
+      const cat = document.getElementById('reg-category').value;
+      const targetEventId = parseInt(document.getElementById('reg-event-select').value);
+
+      const ev = state.events.find(e => e.id === targetEventId);
+      if (ev && ev.registered < ev.slots) {
+        ev.registered++;
+        state.registrants.push({
+          name: name,
+          email: email,
+          eventId: targetEventId,
+          skaterAge: age,
+          category: cat
         });
 
-        // ----------------------------------------------------
-        // PUBLIC PORTAL RENDER LOGIC
-        // ----------------------------------------------------
-        function renderPublicEvents() {
-            const gridContainer = document.getElementById('events-grid');
-            const quickContainer = document.getElementById('quick-events-list');
-            
-            gridContainer.innerHTML = '';
-            quickContainer.innerHTML = '';
+        document.getElementById('reg-name').value = '';
+        document.getElementById('reg-age').value = '';
+        document.getElementById('reg-email').value = '';
+        closeRegistrationModal();
 
-            let filteredList = state.events;
-            if (state.currentFilter !== "all") {
-                filteredList = state.events.filter(e => e.category === state.currentFilter);
+        showToast(`Welcome on board, ${name}! Registered successfully for ${ev.title}.`, "success");
+        renderAll();
+      } else {
+        showToast("Error booking: This event is fully booked.", "error");
+      }
+    }
+
+    function handleCreateEvent(event) {
+      event.preventDefault();
+      const title = document.getElementById('admin-event-title').value.trim();
+      const date = document.getElementById('admin-event-date').value.trim();
+      const time = document.getElementById('admin-event-time').value.trim();
+      const location = document.getElementById('admin-event-location').value.trim();
+      const capacity = parseInt(document.getElementById('admin-event-capacity').value);
+      const description = document.getElementById('admin-event-description').value.trim();
+
+      const newId = state.events.length > 0 ? Math.max(...state.events.map(e => e.id)) + 1 : 1;
+      
+      state.events.push({
+        id: newId,
+        title: title,
+        date: date,
+        time: time,
+        location: location,
+        slots: capacity,
+        registered: 0,
+        description: description
+      });
+
+      document.getElementById('admin-event-title').value = '';
+      document.getElementById('admin-event-date').value = '';
+      document.getElementById('admin-event-time').value = '';
+      document.getElementById('admin-event-location').value = '';
+      document.getElementById('admin-event-capacity').value = '';
+      document.getElementById('admin-event-description').value = '';
+
+      showToast(`Event '${title}' published successfully.`, "success");
+      renderAll();
+    }
+
+    function deleteEvent(id) {
+      const idx = state.events.findIndex(e => e.id === id);
+      if (idx > -1) {
+        const title = state.events[idx].title;
+        state.registrants = state.registrants.filter(r => r.eventId !== id);
+        state.events.splice(idx, 1);
+        showToast(`Deleted event: '${title}' and cleared attendee lists.`, "info");
+        renderAll();
+      }
+    }
+
+    function handleNewsletterSubmit(event) {
+      event.preventDefault();
+      const email = document.getElementById('newsletter-email').value.trim();
+      
+      const duplicate = state.subscribers.some(sub => sub.email.toLowerCase() === email.toLowerCase());
+      if (duplicate) {
+        showToast("This email address is already subscribed to the newsletter.", "info");
+      } else {
+        state.subscribers.push({
+          email: email,
+          date: new Date().toISOString().split('T')[0]
+        });
+        showToast("Subscription confirmed! Welcome to the Bay Area Speed Skating list.", "success");
+      }
+      document.getElementById('newsletter-email').value = '';
+      renderAll();
+    }
+
+    function renderAll() {
+      renderEventsList();
+      renderFundraisingDashboard();
+      renderAdmin();
+
+      document.getElementById('stat-active-events').textContent = state.events.length;
+      document.getElementById('stat-total-athletes').textContent = state.registrants.length;
+    }
+
+    function renderEventsList() {
+      const container = document.getElementById('events-grid-container');
+      container.innerHTML = '';
+
+      const targetEvents = state.events.filter(ev => {
+        if (state.currentFilter === 'open') {
+          return (ev.slots - ev.registered) > 0;
+        }
+        return true;
+      });
+
+      if (targetEvents.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-12 text-center text-slate-500 font-medium">
+            No events match your selected filters. Check back soon for new track announcements!
+          </div>
+        `;
+        return;
+      }
+
+      targetEvents.forEach(ev => {
+        const spotsLeft = ev.slots - ev.registered;
+        const percentFilled = Math.min(100, Math.round((ev.registered / ev.slots) * 100));
+        
+        const card = document.createElement('div');
+        card.className = "bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between";
+        card.innerHTML = `
+          <div class="p-6 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-pacificTeal-600 bg-pacificTeal-50 border border-pacificTeal-100 px-3 py-1 rounded-full uppercase tracking-wider">
+                Active Match
+              </span>
+              <span class="${spotsLeft > 0 ? 'text-emerald-700 bg-emerald-100' : 'text-red-700 bg-red-100'} text-xs font-extrabold px-3 py-1 rounded-full">
+                ${spotsLeft > 0 ? `${spotsLeft} Spots Available` : 'Sold Out'}
+              </span>
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-xl font-bold text-slate-900 leading-snug">${ev.title}</h3>
+              <p class="text-xs text-slate-500 flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                ${ev.location}
+              </p>
+              <p class="text-slate-600 text-sm leading-relaxed">${ev.description}</p>
+            </div>
+          </div>
+
+          <div class="p-6 bg-slate-50 border-t border-slate-100 space-y-4">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-600">
+              <div class="flex items-center gap-1">
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <span>${ev.date}</span>
+              </div>
+              <div>${ev.time}</div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex items-center justify-between text-[11px] font-bold text-slate-500 uppercase">
+                <span>Roster Capacity</span>
+                <span>${ev.registered} / ${ev.slots} Skaters</span>
+              </div>
+              <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-pacificTeal-500 to-sunsetOrange-500" style="width: ${percentFilled}%;"></div>
+              </div>
+            </div>
+
+            ${spotsLeft > 0 
+              ? `<button onclick="openRegistrationModal(${ev.id})" class="w-full text-center bg-pacificTeal-600 hover:bg-pacificTeal-700 text-white font-bold py-2.5 rounded-xl text-xs transition-colors shadow-sm uppercase tracking-wide">Register Spot</button>`
+              : `<button disabled class="w-full text-center bg-slate-200 text-slate-400 font-bold py-2.5 rounded-xl text-xs cursor-not-allowed uppercase tracking-wide">Fully Booked</button>`
             }
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
 
-            if (filteredList.length === 0) {
-                gridContainer.innerHTML = `
-                    <div class="col-span-full py-12 text-center text-slate-500 bg-white border border-slate-200 rounded-2xl shadow-sm">
-                        <i class="fa-solid fa-calendar-times text-4xl mb-4 text-slate-300 animate-bounce"></i>
-                        <p class="text-sm">No speed skating events are currently listed under this filter.</p>
-                    </div>
-                `;
-            }
+    function renderFundraisingDashboard() {
+      const sumDonated = state.donations.reduce((acc, curr) => acc + curr.amount, 0);
+      const percentGoal = Math.min(100, Math.round((sumDonated / state.fundraisingGoal) * 100));
 
-            filteredList.forEach(event => {
-                const formattedDate = new Date(event.date).toLocaleDateString('en-US', {
-                    weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'
-                });
-                
-                const spotsLeft = event.capacity - event.currentSignups;
-                const isFull = spotsLeft <= 0;
+      document.getElementById('fund-raised-label').textContent = `$${sumDonated.toLocaleString()} Raised`;
+      document.getElementById('fund-goal-label').textContent = `$${state.fundraisingGoal.toLocaleString()}`;
+      document.getElementById('fund-progress-bar').style.width = `${percentGoal}%`;
+    }
 
-                const cardHTML = `
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 hover:border-teal-500/50 hover:shadow-lg transition-all flex flex-col justify-between hover:scale-[1.01] duration-300 relative group overflow-hidden shadow-sm">
-                        <div class="absolute -right-16 -bottom-16 w-32 h-32 bg-teal-500/5 rounded-full blur-2xl group-hover:bg-teal-500/10 transition-all"></div>
-                        
-                        <div>
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-bold px-2.5 py-1 rounded-full ${getCategoryBadgeStyles(event.category)}">
-                                    ${event.category}
-                                </span>
-                                <span class="text-xs font-bold ${isFull ? 'text-rose-500' : 'text-slate-400'}">
-                                    ${isFull ? 'Sold Out' : spotsLeft + ' / ' + event.capacity + ' spots remaining'}
-                                </span>
-                            </div>
+    function renderAdmin() {
+      const totalEvents = state.events.length;
+      const totalRegistrations = state.registrants.length;
+      const totalDonationsSum = state.donations.reduce((acc, curr) => acc + curr.amount, 0);
+      const totalSubscribers = state.subscribers.length;
 
-                            <h3 class="text-xl font-bold text-slate-900 mb-2 leading-tight">${event.title}</h3>
-                            <p class="text-slate-500 text-sm font-light line-clamp-3 mb-6">${event.description}</p>
-                        </div>
+      document.getElementById('admin-kpi-events').textContent = totalEvents;
+      document.getElementById('admin-kpi-registrations').textContent = totalRegistrations;
+      document.getElementById('admin-kpi-donations').textContent = `$${totalDonationsSum.toLocaleString()}`;
+      document.getElementById('admin-kpi-subscribers').textContent = totalSubscribers;
 
-                        <div class="space-y-3 pt-4 border-t border-slate-100 text-xs">
-                            <div class="flex items-center text-slate-700 font-semibold space-x-2">
-                                <i class="fa-solid fa-clock text-teal-500 w-4"></i>
-                                <span>${formattedDate} at ${formatTimeString(event.time)}</span>
-                            </div>
-                            <div class="flex items-center text-slate-700 font-semibold space-x-2">
-                                <i class="fa-solid fa-location-dot text-teal-500 w-4"></i>
-                                <span class="truncate">${event.location}</span>
-                            </div>
+      const tableEvents = document.getElementById('admin-table-events');
+      tableEvents.innerHTML = '';
+      
+      if (state.events.length === 0) {
+        tableEvents.innerHTML = `<tr><td colspan="4" class="py-4 text-center text-slate-400">No events found. Post one above!</td></tr>`;
+      } else {
+        state.events.forEach(ev => {
+          const row = document.createElement('tr');
+          row.className = "hover:bg-slate-50 transition-colors";
+          row.innerHTML = `
+            <td class="py-3 pr-2">
+              <span class="block font-bold text-slate-900">${ev.title}</span>
+              <span class="text-[10px] text-slate-500">${ev.date} @ ${ev.time}</span>
+            </td>
+            <td class="py-3 pr-2 text-slate-600">${ev.location}</td>
+            <td class="py-3 pr-2 font-bold">${ev.registered} / ${ev.slots}</td>
+            <td class="py-3 text-right">
+              <button onclick="deleteEvent(${ev.id})" class="text-red-600 hover:text-red-700 font-bold hover:underline">
+                Delete
+              </button>
+            </td>
+          `;
+          tableEvents.appendChild(row);
+        });
+      }
 
-                            <button onclick="openRegistrationModal('${event.id}')" ${isFull ? 'disabled' : ''}
-                                    class="w-full mt-4 py-3 rounded-xl font-bold text-xs transition-all ${isFull ? 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200' : 'bg-slate-50 text-teal-600 border border-teal-500/30 hover:border-teal-500 hover:bg-teal-500/10 active:scale-95' }">
-                                ${isFull ? 'Registration Full' : 'Secure Free Spot'}
-                            </button>
-                        </div>
-                    </div>
-                `;
-                gridContainer.insertAdjacentHTML('beforeend', cardHTML);
-            });
+      const tableRegistrants = document.getElementById('admin-table-registrants');
+      tableRegistrants.innerHTML = '';
 
-            state.events.slice(0, 3).forEach(event => {
-                const formattedDate = new Date(event.date).toLocaleDateString('en-US', {
-                    month: 'short', day: 'numeric', year: 'numeric'
-                });
-                const isFull = (event.capacity - event.currentSignups) <= 0;
+      if (state.registrants.length === 0) {
+        tableRegistrants.innerHTML = `<tr><td colspan="4" class="py-4 text-center text-slate-400">No registrants currently found.</td></tr>`;
+      } else {
+        state.registrants.forEach(reg => {
+          const matchingEvent = state.events.find(ev => ev.id === reg.eventId);
+          const evTitle = matchingEvent ? matchingEvent.title : "Unknown Event / Purged";
 
-                const quickHTML = `
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between hover:border-slate-300 hover:shadow-md transition-all shadow-sm">
-                        <div>
-                            <span class="text-[10px] font-bold tracking-widest text-teal-600 uppercase">${event.category}</span>
-                            <h4 class="text-lg font-bold text-slate-900 mt-1 mb-2 leading-snug">${event.title}</h4>
-                            <p class="text-slate-500 text-xs line-clamp-2 mb-4">${event.description}</p>
-                        </div>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-                            <span class="text-slate-500 font-medium"><i class="fa-regular fa-calendar mr-1.5"></i>${formattedDate}</span>
-                            <button onclick="openRegistrationModal('${event.id}')" ${isFull ? 'disabled' : ''} class="text-teal-600 hover:text-teal-700 font-bold flex items-center space-x-1">
-                                <span>${isFull ? 'Closed' : 'Register'}</span>
-                                <i class="fa-solid fa-angle-right text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-                quickContainer.insertAdjacentHTML('beforeend', quickHTML);
-            });
+          const row = document.createElement('tr');
+          row.className = "hover:bg-slate-50 transition-colors";
+          row.innerHTML = `
+            <td class="py-3 pr-2 font-bold text-slate-900">${reg.name}</td>
+            <td class="py-3 pr-2 text-slate-600">Age: ${reg.skaterAge} (${reg.category})</td>
+            <td class="py-3 pr-2 text-slate-500 font-mono">${reg.email}</td>
+            <td class="py-3 text-slate-700">${evTitle}</td>
+          `;
+          tableRegistrants.appendChild(row);
+        });
+      }
+
+      const tableDonors = document.getElementById('admin-table-donors');
+      tableDonors.innerHTML = '';
+
+      if (state.donations.length === 0) {
+        tableDonors.innerHTML = `<tr><td colspan="4" class="py-4 text-center text-slate-400">No donation pledges captured.</td></tr>`;
+      } else {
+        state.donations.forEach(don => {
+          const row = document.createElement('tr');
+          row.className = "hover:bg-slate-50 transition-colors";
+          row.innerHTML = `
+            <td class="py-3 pr-2 font-bold text-slate-900">${don.name}</td>
+            <td class="py-3 pr-2 text-slate-600">${don.tier}</td>
+            <td class="py-3 pr-2 text-slate-500 font-mono">${don.email}</td>
+            <td class="py-3 text-right font-extrabold text-emerald-600">$${don.amount.toLocaleString()}</td>
+          `;
+          tableDonors.appendChild(row);
+        });
+      }
+
+      const tableSubscribers = document.getElementById('admin-table-subscribers');
+      tableSubscribers.innerHTML = '';
+
+      if (state.subscribers.length === 0) {
+        tableSubscribers.innerHTML = `<tr><td colspan="2" class="py-4 text-center text-slate-400">No active subscribers.</td></tr>`;
+      } else {
+        state.subscribers.forEach(sub => {
+          const row = document.createElement('tr');
+          row.className = "hover:bg-slate-50 transition-colors";
+          row.innerHTML = `
+            <td class="py-2.5 pr-2 font-semibold text-slate-900 font-mono">${sub.email}</td>
+            <td class="py-2.5 text-slate-500">${sub.date}</td>
+          `;
+          tableSubscribers.appendChild(row);
+        });
+      }
+    }
+
+    function exportCSV(type) {
+      let csvContent = "";
+      
+      if (type === 'registrants') {
+        csvContent = "Name,Age,Category,Email,Event\n";
+        state.registrants.forEach(r => {
+          const matchedEv = state.events.find(e => e.id === r.eventId);
+          const evTitle = matchedEv ? matchedEv.title : "Purged";
+          csvContent += `"${r.name}",${r.skaterAge},"${r.category}","${r.email}","${evTitle}"\n`;
+        });
+      } else if (type === 'donors') {
+        csvContent = "Donor Name,Tier Level,Email,Amount,Date\n";
+        state.donations.forEach(d => {
+          csvContent += `"${d.name}","${d.tier}","${d.email}",${d.amount},"${d.date}"\n`;
+        });
+      } else if (type === 'subscribers') {
+        csvContent = "Email,Subscription Date\n";
+        state.subscribers.forEach(s => {
+          csvContent += `"${s.email}","${s.date}"\n`;
+        });
+      }
+
+      const el = document.createElement('textarea');
+      el.value = csvContent;
+      el.setAttribute('readonly', '');
+      el.style.position = 'absolute';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      el.select();
+      
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showToast(`${type.toUpperCase()} spreadsheet copied to clipboard! Paste it into Excel or Google Sheets.`, "success");
+        } else {
+          showToast("Failed to copy CSV data. Check browser permissions.", "error");
         }
-
-        function getCategoryBadgeStyles(category) {
-            switch(category) {
-                case "Clinic": return "bg-teal-500/10 text-teal-700 border border-teal-500/20";
-                case "Meet": return "bg-orange-500/10 text-orange-700 border border-orange-500/20";
-                case "Community": return "bg-amber-500/10 text-amber-700 border border-amber-500/20";
-                default: return "bg-slate-100 text-slate-600";
-            }
-        }
-
-        function filterEvents(category) {
-            state.currentFilter = category;
-            
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('bg-teal-500', 'text-white', 'border-teal-500');
-                btn.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
-            });
-            
-            const activeBtn = event.currentTarget || event.target;
-            activeBtn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
-            activeBtn.classList.add('bg-teal-500', 'text-white', 'border-teal-500');
-
-            renderPublicEvents();
-        }
-
-        function formatTimeString(timeString) {
-            const [hour, minute] = timeString.split(':');
-            const h = parseInt(hour);
-            const suffix = h >= 12 ? 'PM' : 'AM';
-            const displayH = h % 12 || 12;
-            return `${displayH}:${minute} ${suffix}`;
-        }
-
-        // ----------------------------------------------------
-        // PUBLIC REGISTRATION FLOW
-        // ----------------------------------------------------
-        function openRegistrationModal(eventId) {
-            const event = state.events.find(e => e.id === eventId);
-            if (!event) return;
-
-            document.getElementById('reg-event-id').value = eventId;
-            document.getElementById('reg-modal-title').innerText = event.title;
-            
-            const formattedDate = new Date(event.date).toLocaleDateString('en-US', {
-                weekday: 'long', month: 'long', day: 'numeric'
-            });
-            document.getElementById('reg-modal-datetime').innerHTML = `
-                <i class="fa-solid fa-clock text-teal-500 mr-1"></i> ${formattedDate} at ${formatTimeString(event.time)} <br>
-                <i class="fa-solid fa-location-dot text-teal-500 mr-1 mt-1"></i> ${event.location}
-            `;
-
-            document.getElementById('registration-modal').classList.remove('hidden');
-        }
-
-        function closeRegistrationModal() {
-            document.getElementById('registration-modal').classList.add('hidden');
-            document.getElementById('registration-form').reset();
-        }
-
-        function submitRegistration(e) {
-            e.preventDefault();
-            const eventId = document.getElementById('reg-event-id').value;
-            const firstName = document.getElementById('reg-firstname').value.trim();
-            const lastName = document.getElementById('reg-lastname').value.trim();
-            const email = document.getElementById('reg-email').value.trim();
-            const age = document.getElementById('reg-age').value;
-            const level = document.getElementById('reg-level').value;
-            const skates = document.getElementById('reg-skates').value;
-
-            const newReg = {
-                id: `reg-${Date.now()}`,
-                eventId,
-                firstName,
-                lastName,
-                email,
-                age,
-                level,
-                skates
-            };
-
-            const eventIndex = state.events.findIndex(e => e.id === eventId);
-            if (eventIndex !== -1) {
-                if (state.events[eventIndex].currentSignups >= state.events[eventIndex].capacity) {
-                    showNotification("Failed to sign up", "This speed skating event is already at capacity limits.", "error");
-                    closeRegistrationModal();
-                    return;
-                }
-                state.events[eventIndex].currentSignups += 1;
-            }
-
-            state.registrations.push(newReg);
-            
-            renderPublicEvents();
-            updateStats();
-            renderAdminEvents();
-            renderAdminRegistrants();
-            
-            closeRegistrationModal();
-            showNotification("Sign Up Successful!", `Thank you, ${firstName}! We've saved your spot for this speed skating session.`, "success");
-        }
-
-        // ----------------------------------------------------
-        // INTERACTIVE FUNDRAISING LOGIC
-        // ----------------------------------------------------
-        function renderFundraising() {
-            const totalDonated = state.donations.reduce((acc, current) => acc + current.amount, 0);
-            const goal = state.donationGoal;
-            const percentage = Math.min(Math.round((totalDonated / goal) * 100), 100);
-
-            document.getElementById('live-raised-amount').innerText = `$${totalDonated.toLocaleString()}`;
-            document.getElementById('live-goal-amount').innerText = `$${goal.toLocaleString()}`;
-            document.getElementById('live-progress-pct').innerText = `${percentage}% Complete`;
-            document.getElementById('live-pledge-count').innerText = `${state.donations.length} Pledges Logged`;
-            
-            document.getElementById('live-progress-fill').style.width = `${percentage}%`;
-        }
-
-        function selectDonationTier(amount, tierName) {
-            document.getElementById('don-amount').value = amount;
-            document.getElementById('don-tier').value = tierName;
-
-            const targetInput = document.getElementById('don-amount');
-            targetInput.classList.add('ring-2', 'ring-teal-500');
-            setTimeout(() => {
-                targetInput.classList.remove('ring-2', 'ring-teal-500');
-            }, 600);
-
-            showNotification("Tier Selected", `Form updated to a $${amount} pledge for: ${tierName}.`, "info");
-        }
-
-        function submitDonation(e) {
-            e.preventDefault();
-            const donorName = document.getElementById('don-name').value.trim();
-            const donorEmail = document.getElementById('don-email').value.trim();
-            const amount = parseInt(document.getElementById('don-amount').value);
-            const rawTier = document.getElementById('don-tier').value;
-            const tierName = rawTier ? rawTier : "Custom Contribution";
-
-            if (isNaN(amount) || amount <= 0) {
-                showNotification("Invalid Pledge", "Please specify a positive contribution amount.", "error");
-                return;
-            }
-
-            const newDonation = {
-                id: `don-${Date.now()}`,
-                name: donorName,
-                email: donorEmail,
-                amount: amount,
-                tier: tierName
-            };
-
-            state.donations.push(newDonation);
-
-            document.getElementById('donation-form').reset();
-            document.getElementById('don-tier').value = 'Custom Contribution';
-
-            renderFundraising();
-            updateStats();
-            renderAdminDonations();
-
-            showNotification("Pledge Logged! 🎗️", `Thank you, ${donorName}! Your tax-deductible pledge of $${amount} has been logged under EIN 41-5160846.`, "success");
-        }
-
-        function handleNewsletterSub(e) {
-            e.preventDefault();
-            const emailInput = document.getElementById('news-email');
-            const email = emailInput.value.trim().toLowerCase();
-
-            if (state.subscribers.includes(email)) {
-                showNotification("Already Subscribed", "This email address is already registered on our Training Dispatch list.", "info");
-                emailInput.value = '';
-                return;
-            }
-
-            state.subscribers.push(email);
-            emailInput.value = '';
-            
-            updateStats();
-            renderAdminSubscribers();
-            showNotification("Subscribed Successfully!", "You have been added to our speed skating community newsletter.", "success");
-        }
-
-        // ----------------------------------------------------
-        // ADMIN AUTHORIZATION LOGIC
-        // ----------------------------------------------------
-        function handleAdminAuth(e) {
-            e.preventDefault();
-            const passcode = document.getElementById('admin-passcode').value;
-
-            if (passcode === "admin123") {
-                state.authenticated = true;
-                document.getElementById('admin-lock-screen').classList.add('hidden');
-                document.getElementById('admin-active-panel').classList.remove('hidden');
-                
-                renderAdminEvents();
-                renderAdminRegistrants();
-                renderAdminSubscribers();
-                renderAdminDonations();
-                updateStats();
-
-                showNotification("Access Unlocked", "Admin authentication successful.", "success");
-            } else {
-                showNotification("Access Denied", "Incorrect administrator passcode entered.", "error");
-            }
-            document.getElementById('admin-passcode').value = '';
-        }
-
-        function logoutAdmin() {
-            state.authenticated = false;
-            document.getElementById('admin-active-panel').classList.add('hidden');
-            document.getElementById('admin-lock-screen').classList.remove('hidden');
-            showNotification("Admin Logged Out", "Your admin access session has ended safely.", "info");
-        }
-
-        // ----------------------------------------------------
-        // ADMIN PANEL UPDATES
-        // ----------------------------------------------------
-        function updateStats() {
-            const totalEvents = state.events.length;
-            const totalSignups = state.registrations.length;
-            const totalSubs = state.subscribers.length;
-            const totalRaised = state.donations.reduce((acc, current) => acc + current.amount, 0);
-
-            document.getElementById('stat-total-events').innerText = totalEvents;
-            document.getElementById('stat-total-signups').innerText = totalSignups;
-            document.getElementById('stat-total-subs').innerText = totalSubs;
-            document.getElementById('stat-total-raised').innerText = `$${totalRaised.toLocaleString()}`;
-        }
-
-        function renderAdminEvents() {
-            const tbody = document.getElementById('admin-events-tbody');
-            tbody.innerHTML = '';
-
-            state.events.forEach(event => {
-                const tr = document.createElement('tr');
-                tr.className = "border-b border-slate-100 hover:bg-slate-50/80 transition-colors";
-                tr.innerHTML = `
-                    <td class="py-4 px-4 font-bold text-slate-900">
-                        <span class="block">${event.title}</span>
-                        <span class="text-xs text-slate-400 font-semibold">${event.location}</span>
-                    </td>
-                    <td class="py-4 px-4 text-slate-500 font-bold">
-                        ${event.currentSignups} / ${event.capacity}
-                    </td>
-                    <td class="py-4 px-4 text-right">
-                        <button onclick="deleteEvent('${event.id}')" class="text-slate-400 hover:text-rose-500 transition-all p-1.5" title="Remove Event">
-                            <i class="fa-solid fa-trash text-sm"></i>
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function renderAdminRegistrants() {
-            const tbody = document.getElementById('admin-registrants-tbody');
-            tbody.innerHTML = '';
-
-            if (state.registrations.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="4" class="py-8 text-center text-slate-400">No active skate registrants on file.</td>
-                    </tr>
-                `;
-                return;
-            }
-
-            state.registrations.forEach(reg => {
-                const relatedEvent = state.events.find(e => e.id === reg.eventId);
-                const eventTitle = relatedEvent ? relatedEvent.title : "Unknown Event";
-
-                const tr = document.createElement('tr');
-                tr.className = "border-b border-slate-100 hover:bg-slate-50/80 transition-colors";
-                tr.innerHTML = `
-                    <td class="py-4 px-4 font-bold text-slate-900">${reg.firstName} ${reg.lastName}</td>
-                    <td class="py-4 px-4 text-xs font-semibold">
-                        <span class="block text-slate-600">${reg.email}</span>
-                        <span class="text-slate-400">${reg.age}</span>
-                    </td>
-                    <td class="py-4 px-4 text-slate-500 font-medium text-xs">${eventTitle}</td>
-                    <td class="py-4 px-4">
-                        <span class="inline-block text-xs font-bold px-2.5 py-1 bg-slate-50 text-slate-600 border border-slate-200 rounded-full">${reg.level}</span>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function renderAdminDonations() {
-            const tbody = document.getElementById('admin-donations-tbody');
-            tbody.innerHTML = '';
-
-            if (state.donations.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="3" class="py-8 text-center text-slate-400">No donation records received yet.</td>
-                    </tr>
-                `;
-                return;
-            }
-
-            state.donations.forEach(don => {
-                const tr = document.createElement('tr');
-                tr.className = "border-b border-slate-100 hover:bg-slate-50/80 transition-colors";
-                tr.innerHTML = `
-                    <td class="py-4 px-4 font-bold text-slate-900">
-                        <span>${don.name}</span>
-                        <span class="block text-[11px] text-slate-400 font-semibold">${don.email}</span>
-                    </td>
-                    <td class="py-4 px-4 text-xs font-semibold text-slate-500">${don.tier}</td>
-                    <td class="py-4 px-4 text-right font-mono font-bold text-teal-600">
-                        $${don.amount.toLocaleString()}
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function renderAdminSubscribers() {
-            const tbody = document.getElementById('admin-subscribers-tbody');
-            tbody.innerHTML = '';
-
-            if (state.subscribers.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="2" class="py-6 text-center text-slate-400">No active dispatch subscribers.</td>
-                    </tr>
-                `;
-                return;
-            }
-
-            state.subscribers.forEach(email => {
-                const tr = document.createElement('tr');
-                tr.className = "border-b border-slate-100 hover:bg-slate-50/80 transition-colors";
-                tr.innerHTML = `
-                    <td class="py-3.5 px-4 text-slate-600 font-mono text-xs font-semibold">${email}</td>
-                    <td class="py-3.5 px-4">
-                        <span class="text-xs text-emerald-600 font-bold tracking-wider uppercase"><i class="fa-solid fa-circle text-[6px] mr-1 animate-pulse"></i>Active</span>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function handlePostEvent(e) {
-            e.preventDefault();
-            const title = document.getElementById('ev-title').value.trim();
-            const date = document.getElementById('ev-date').value;
-            const time = document.getElementById('ev-time').value;
-            const category = document.getElementById('ev-category').value;
-            const capacity = parseInt(document.getElementById('ev-capacity').value);
-            const location = document.getElementById('ev-location').value.trim();
-            const description = document.getElementById('ev-description').value.trim();
-
-            const newEvent = {
-                id: `ev-${Date.now()}`,
-                title,
-                date,
-                time,
-                location,
-                category,
-                capacity,
-                currentSignups: 0,
-                description
-            };
-
-            state.events.push(newEvent);
-            document.getElementById('post-event-form').reset();
-
-            renderPublicEvents();
-            updateStats();
-            renderAdminEvents();
-
-            showNotification("Event Published", `Your training session "${title}" is now active and joinable on the calendar.`, "success");
-        }
-
-        function deleteEvent(eventId) {
-            const eventTitle = state.events.find(e => e.id === eventId)?.title || "Event";
-            
-            state.events = state.events.filter(e => e.id !== eventId);
-            state.registrations = state.registrations.filter(r => r.eventId !== eventId);
-
-            renderPublicEvents();
-            updateStats();
-            renderAdminEvents();
-            renderAdminRegistrants();
-
-            showNotification("Event Deleted", `Successfully canceled "${eventTitle}" and cleaned register rosters.`, "info");
-        }
-
-        // ----------------------------------------------------
-        // ROSTER DOWNLOAD/COPY SIMULATIONS
-        // ----------------------------------------------------
-        function downloadRoster() {
-            if (state.registrations.length === 0) {
-                showNotification("Roster Empty", "There are no participants signed up currently to copy.", "info");
-                return;
-            }
-
-            let csv = "First Name,Last Name,Email,Age Group,Level,Rental Equipment,Event ID\n";
-            state.registrations.forEach(r => {
-                csv += `"${r.firstName}","${r.lastName}","${r.email}","${r.age}","${r.level}","${r.skates}","${r.eventId}"\n`;
-            });
-
-            const tempEl = document.createElement('textarea');
-            tempEl.value = csv;
-            document.body.appendChild(tempEl);
-            tempEl.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempEl);
-
-            showNotification("Copied CSV!", "The registration lists have been copied to your clipboard in CSV spreadsheet formatting.", "success");
-        }
-
-        function downloadDonors() {
-            if (state.donations.length === 0) {
-                showNotification("Ledger Empty", "There are no pledge donations logged currently.", "info");
-                return;
-            }
-
-            let csv = "Donor Name,Email,Pledge Amount,Tier Description\n";
-            state.donations.forEach(d => {
-                csv += `"${d.name}","${d.email}",${d.amount},"${d.tier}"\n`;
-            });
-
-            const tempEl = document.createElement('textarea');
-            tempEl.value = csv;
-            document.body.appendChild(tempEl);
-            tempEl.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempEl);
-
-            showNotification("Copied Ledger CSV!", "The donor list has been copied to your clipboard in CSV spreadsheet formatting.", "success");
-        }
-
-        function downloadSubscribers() {
-            if (state.subscribers.length === 0) {
-                showNotification("No Subscribers", "No active mailing pool to copy.", "info");
-                return;
-            }
-
-            const rawList = state.subscribers.join("\n");
-            
-            const tempEl = document.createElement('textarea');
-            tempEl.value = rawList;
-            document.body.appendChild(tempEl);
-            tempEl.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempEl);
-
-            showNotification("Copied Email List!", "The subscriber email list has been copied successfully to your clipboard.", "success");
-        }
-
-        // ----------------------------------------------------
-        // UX NOTIFICATIONS TOAST ENGINE
-        // ----------------------------------------------------
-        function showNotification(title, message, type = "success") {
-            const banner = document.getElementById('notification-banner');
-            const iconContainer = document.getElementById('notification-icon');
-            const titleEl = document.getElementById('notification-title');
-            const msgEl = document.getElementById('notification-message');
-
-            titleEl.innerText = title;
-            msgEl.innerText = message;
-
-            iconContainer.className = "p-2 rounded-lg text-lg flex items-center justify-center ";
-            if (type === "success") {
-                iconContainer.classList.add("bg-emerald-100", "text-emerald-700");
-                iconContainer.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
-            } else if (type === "error") {
-                iconContainer.classList.add("bg-rose-100", "text-rose-700");
-                iconContainer.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
-            } else {
-                iconContainer.classList.add("bg-amber-100", "text-amber-700");
-                iconContainer.innerHTML = '<i class="fa-solid fa-info-circle"></i>';
-            }
-
-            banner.classList.remove('opacity-0', 'translate-x-128');
-            
-            if (window.toastTimeout) {
-                clearTimeout(window.toastTimeout);
-            }
-
-            window.toastTimeout = setTimeout(() => {
-                hideNotification();
-            }, 5000);
-        }
-
-        function hideNotification() {
-            const banner = document.getElementById('notification-banner');
-            banner.classList.add('opacity-0', 'translate-x-128');
-        }
-    </script>
+      } catch (err) {
+        showToast("Error executing copy protocol.", "error");
+      }
+      document.body.removeChild(el);
+    }
+  </script>
 </body>
 </html>
