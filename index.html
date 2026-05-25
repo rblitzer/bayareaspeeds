@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bay Area Speed Skating Inc. | California Youth & Masters Speed Skating</title>
   
+  <!-- Inline SVG Favicon (Renders a Teal Speed Skate directly in the browser tab) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300a8b5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 18h18M6 18V14c0-2 2-3 5-3h4c2 0 3-1 3-3V4H9'/%3E%3Cpath d='M9 18v-4M15 18v-4M1 12h2'/%3E%3C/svg%3E">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -32,48 +35,42 @@
       }
     }
   </script>
-  
-  <!-- Google Fonts Configuration -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Base Page Styling -->
   <style>
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
-    h1, h2, h3, h4, .heading-font {
+    h1, h2, h3, .heading-font {
       font-family: 'Space Grotesk', sans-serif;
     }
     .custom-radial {
       background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.08) 0%, rgba(0, 168, 181, 0.05) 50%, transparent 100%);
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-in {
-      animation: fadeIn 0.4s ease-out forwards;
-    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col custom-radial">
 
-  <!-- Toast alert container for async confirmations -->
+  <!-- Toast Container -->
   <div id="toast-container" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-2 max-w-sm w-full px-4 sm:px-0"></div>
 
-  <!-- Header & Navigation Bar -->
+  <!-- Header Navigation -->
   <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Brand Logo -->
+      <!-- Brand Logo (gliding speed skate) -->
       <a href="#" onclick="switchTab('home')" class="flex items-center gap-3 group focus:outline-none">
         <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-pacificTeal-600 via-sunsetOrange-500 to-poppyGold-400 p-[2px] shadow-md group-hover:scale-105 transition-transform">
           <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
-            <!-- Sleek lightning bolt speed skating asset -->
-            <svg class="w-6 h-6 text-pacificTeal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            <!-- Custom dynamic speed skate blade SVG -->
+            <svg class="w-6 h-6 text-pacificTeal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18h18" /> <!-- Extended Speed Blade -->
+              <path d="M6 18V14c0-2 2-3 5-3h4c2 0 3-1 3-3V4H9" /> <!-- Boot Frame -->
+              <path d="M9 18v-4" /> <!-- Post 1 -->
+              <path d="M15 18v-4" /> <!-- Post 2 -->
+              <path d="M1 12h2" /> <!-- Wind Trail -->
             </svg>
           </div>
         </div>
@@ -83,14 +80,11 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation Menu (Maintains complete security with zero public Admin buttons) -->
+      <!-- Desktop Navigation Menu -->
       <nav class="hidden md:flex items-center gap-8">
         <button onclick="switchTab('home')" id="nav-home" class="font-medium text-pacificTeal-600 border-b-2 border-pacificTeal-500 pb-1 pt-1 transition-all">Home</button>
         <button onclick="switchTab('events')" id="nav-events" class="font-medium text-slate-600 hover:text-pacificTeal-600 pb-1 pt-1 transition-all">Events & Races</button>
         <button onclick="switchTab('support')" id="nav-support" class="font-medium text-slate-600 hover:text-pacificTeal-600 pb-1 pt-1 transition-all">Support Us</button>
-        <button onclick="openRegistrationModal()" class="bg-gradient-to-r from-pacificTeal-600 to-sunsetOrange-500 hover:from-pacificTeal-700 hover:to-sunsetOrange-600 text-white px-5 py-2.5 rounded-xl font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-sm">
-          Register to Skate
-        </button>
       </nav>
 
       <!-- Mobile Menu Button -->
@@ -106,16 +100,13 @@
       <button onclick="switchTab('home'); toggleMobileMenu()" class="text-left font-medium text-slate-900 py-2 border-b border-slate-50">Home</button>
       <button onclick="switchTab('events'); toggleMobileMenu()" class="text-left font-medium text-slate-900 py-2 border-b border-slate-50">Events & Races</button>
       <button onclick="switchTab('support'); toggleMobileMenu()" class="text-left font-medium text-slate-900 py-2 border-b border-slate-50">Support Us</button>
-      <button onclick="openRegistrationModal(); toggleMobileMenu()" class="w-full bg-gradient-to-r from-pacificTeal-600 to-sunsetOrange-500 text-white py-3 rounded-xl font-semibold text-center mt-2 shadow-sm">
-        Register to Skate
-      </button>
     </div>
   </header>
 
   <!-- Main View Frame -->
   <main class="flex-grow">
 
-    <!-- TAB: HOME (Landing Page) -->
+    <!-- TAB: HOME -->
     <section id="tab-home" class="block animate-fade-in">
       <!-- Hero Unit -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -139,7 +130,6 @@
               Support Our Programs
             </button>
           </div>
-          
           <!-- Highlights Counter Banner -->
           <div class="pt-8 grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0 border-t border-slate-200">
             <div>
@@ -157,7 +147,7 @@
           </div>
         </div>
 
-        <!-- Hero Graphic (Inline SVG Design - Abstract California Speed Loop) -->
+        <!-- Hero Graphic (Inline SVG Design - Golden Gate Bridge Sunset Speed Loop) -->
         <div class="lg:col-span-5 flex justify-center">
           <div class="relative w-full max-w-md aspect-square bg-gradient-to-br from-pacificTeal-50 to-orange-50 rounded-full border-4 border-white shadow-2xl overflow-hidden flex items-center justify-center">
             <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 400" fill="none">
@@ -253,11 +243,11 @@
       </div>
 
       <div id="events-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Event Cards will be dynamically injected here via JavaScript -->
+        <!-- Injected via javascript -->
       </div>
     </section>
 
-    <!-- TAB: SUPPORT / FUNDRAISING -->
+    <!-- TAB: SUPPORT -->
     <section id="tab-support" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
         
@@ -271,7 +261,7 @@
             </p>
           </div>
 
-          <!-- Official EIN Non-Profit Badge -->
+          <!-- Official EIN Badge -->
           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-start gap-4 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50/50 rounded-full -mr-10 -mt-10 border border-amber-100"></div>
             <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-500 flex-shrink-0">
@@ -290,7 +280,7 @@
             </div>
           </div>
 
-          <!-- Dynamic Live Fundraising Progress Gauge -->
+          <!-- Dynamic progress tracking -->
           <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
             <div class="flex items-center justify-between">
               <div>
@@ -312,7 +302,7 @@
             </p>
           </div>
 
-          <!-- Preset Support Selection -->
+          <!-- presets -->
           <div class="space-y-4">
             <h3 class="text-lg font-bold text-slate-900">How Your Support Fuels California Athletes:</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -340,7 +330,7 @@
           </div>
         </div>
 
-        <!-- Right Column: Donation Form Panel -->
+        <!-- Right Column (Donation Form) -->
         <div class="lg:col-span-5">
           <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-md sticky top-24 space-y-6">
             <div class="border-b border-slate-100 pb-4">
@@ -361,7 +351,7 @@
               <div>
                 <label class="block text-sm font-semibold text-slate-600 mb-1.5">Full Name</label>
                 <input type="text" id="donation-name" placeholder="Robert Blitzer" required 
-                  class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-pacificTeal-500 text-sm">
+                  class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-pacificTeal-500 text-sm animate-none">
               </div>
 
               <div>
@@ -392,8 +382,13 @@
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-pacificTeal-500 to-poppyGold-400 p-[1.5px]">
             <div class="w-full h-full bg-slate-900 rounded-[7px] flex items-center justify-center">
-              <svg class="w-5 h-5 text-pacificTeal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              <!-- Footer Speed Skate Icon -->
+              <svg class="w-5 h-5 text-pacificTeal-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 18h18" />
+                <path d="M6 18V14c0-2 2-3 5-3h4c2 0 3-1 3-3V4H9" />
+                <path d="M9 18v-4" />
+                <path d="M15 18v-4" />
+                <path d="M1 12h2" />
               </svg>
             </div>
           </div>
