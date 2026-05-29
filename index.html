@@ -992,7 +992,6 @@
 
     function renderAll() {
       renderEventsList();
-      renderFundraisingDashboard();
       renderAdmin();
 
       document.getElementById('stat-active-events').textContent = state.events.length;
@@ -1087,12 +1086,10 @@
     function renderAdmin() {
       const totalEvents = state.events.length;
       const totalRegistrations = state.registrants.length;
-      const totalDonationsSum = state.donations.reduce((acc, curr) => acc + curr.amount, 0);
       const totalSubscribers = state.subscribers.length;
 
       document.getElementById('admin-kpi-events').textContent = totalEvents;
       document.getElementById('admin-kpi-registrations').textContent = totalRegistrations;
-      document.getElementById('admin-kpi-donations').textContent = `$${totalDonationsSum.toLocaleString()}`;
       document.getElementById('admin-kpi-subscribers').textContent = totalSubscribers;
 
       const tableEvents = document.getElementById('admin-table-events');
@@ -1140,25 +1137,6 @@
             <td class="py-3 text-slate-700">${evTitle}</td>
           `;
           tableRegistrants.appendChild(row);
-        });
-      }
-
-      const tableDonors = document.getElementById('admin-table-donors');
-      tableDonors.innerHTML = '';
-
-      if (state.donations.length === 0) {
-        tableDonors.innerHTML = `<tr><td colspan="4" class="py-4 text-center text-slate-400">No donation pledges captured.</td></tr>`;
-      } else {
-        state.donations.forEach(don => {
-          const row = document.createElement('tr');
-          row.className = "hover:bg-slate-50 transition-colors";
-          row.innerHTML = `
-            <td class="py-3 pr-2 font-bold text-slate-900">${don.name}</td>
-            <td class="py-3 pr-2 text-slate-600">${don.tier}</td>
-            <td class="py-3 pr-2 text-slate-500 font-mono">${don.email}</td>
-            <td class="py-3 text-right font-extrabold text-emerald-600">$${don.amount.toLocaleString()}</td>
-          `;
-          tableDonors.appendChild(row);
         });
       }
 
