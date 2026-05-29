@@ -971,6 +971,19 @@
       }
     }
 
+    function deleteSubscriber(index) {
+      if (index > -1 && index < state.subscribers.length) {
+      const emailRemoved = state.subscribers[index].email;
+      // Remove the item from the state array
+      state.subscribers.splice(index, 1);
+    
+      // Alert the admin, commit to localStorage, and rebuild views
+        showToast(`Removed subscriber: ${emailRemoved}`, "info");
+        saveState();
+        renderAll();
+      }
+    }
+
     function handleNewsletterSubmit(event) {
       event.preventDefault();
       const email = document.getElementById('newsletter-email').value.trim();
@@ -1150,8 +1163,13 @@
           const row = document.createElement('tr');
           row.className = "hover:bg-slate-50 transition-colors";
           row.innerHTML = `
-            <td class="py-2.5 pr-2 font-semibold text-slate-900 font-mono">${sub.email}</td>
-            <td class="py-2.5 text-slate-500">${sub.date}</td>
+             <td class="py-2.5 pr-2 font-semibold text-slate-900 font-mono">${sub.email}</td>
+             <td class="py-2.5 text-slate-500">${sub.date}</td>
+             <td class="py-2.5 text-right">
+                <button onclick="deleteSubscriber(${index})" class="text-red-600 hover:text-red-700 font-bold hover:underline">
+                Remove
+                </button>
+            </td>
           `;
           tableSubscribers.appendChild(row);
         });
