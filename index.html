@@ -8,10 +8,8 @@
   async
   src="https://widgets.givebutter.com/latest.umd.cjs?acct=E4YSXI3VsnBPFAhm&p=other"
   ></script>
-  <!-- Inline SVG Favicon (Teal Speed Skate in the browser tab) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300a8b5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 18h18M6 18V14c0-2 2-3 5-3h4c2 0 3-1 3-3V4H9'/%3E%3Cpath d='M9 18v-4M15 18v-4M1 12h2'/%3E%3C/svg%3E">
 
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -38,7 +36,6 @@
       }
     }
   </script>
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -56,18 +53,14 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col custom-radial">
 
-  <!-- Toast Container -->
   <div id="toast-container" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-2 max-w-sm w-full px-4 sm:px-0"></div>
 
-  <!-- Header Navigation -->
   <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Brand Logo -->
       <a href="#" onclick="switchTab('home')" class="flex items-center gap-3 group focus:outline-none">
         <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-pacificTeal-600 via-sunsetOrange-500 to-poppyGold-400 p-[2px] shadow-md group-hover:scale-105 transition-transform">
           <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
-            <!-- Custom Dynamic Skate SVG -->
             <svg class="w-6 h-6 text-pacificTeal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 18h18" />
               <path d="M6 18V14c0-2 2-3 5-3h4c2 0 3-1 3-3V4H9" />
@@ -83,14 +76,12 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation Menu -->
       <nav class="hidden md:flex items-center gap-8">
         <button onclick="switchTab('home')" id="nav-home" class="font-medium text-pacificTeal-600 border-b-2 border-pacificTeal-500 pb-1 pt-1 transition-all">Home</button>
         <button onclick="switchTab('events')" id="nav-events" class="font-medium text-slate-600 hover:text-pacificTeal-600 pb-1 pt-1 transition-all">Events & Races</button>
         <button onclick="switchTab('support')" id="nav-support" class="font-medium text-slate-600 hover:text-pacificTeal-600 pb-1 pt-1 transition-all">Support Us</button>
       </nav>
 
-      <!-- Mobile Menu Button -->
       <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none">
         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -98,7 +89,6 @@
       </button>
     </div>
 
-    <!-- Mobile Navigation Drawer -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white shadow-inner py-4 px-6 flex flex-col gap-4 animate-fade-in">
       <button onclick="switchTab('home'); toggleMobileMenu()" class="text-left font-medium text-slate-900 py-2 border-b border-slate-50">Home</button>
       <button onclick="switchTab('events'); toggleMobileMenu()" class="text-left font-medium text-slate-900 py-2 border-b border-slate-50">Events & Races</button>
@@ -106,12 +96,9 @@
     </div>
   </header>
 
-  <!-- Main View Frame -->
   <main class="flex-grow">
 
-    <!-- TAB: HOME -->
     <section id="tab-home" class="block animate-fade-in">
-      <!-- Centered Hero Unit (Clean, text-focused aesthetic) -->
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 text-center space-y-8">
         <div class="inline-flex items-center gap-2 bg-pacificTeal-50 border border-pacificTeal-100 text-pacificTeal-700 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide shadow-sm">
           <span class="w-2.5 h-2.5 rounded-full bg-sunsetOrange-500 animate-pulse"></span>
@@ -136,7 +123,6 @@
           </button>
         </div>
 
-        <!-- Highlights Counter Banner -->
         <div class="pt-10 grid grid-cols-3 gap-6 max-w-lg mx-auto border-t border-slate-200">
           <div>
             <span class="block text-3xl font-extrabold text-slate-900">501(c)(3)</span>
@@ -153,7 +139,6 @@
         </div>
       </div>
 
-      <!-- Feature Highlight / Values Section -->
       <div class="bg-white border-y border-slate-100 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center max-w-3xl mx-auto space-y-4">
@@ -161,7 +146,6 @@
             <p class="text-slate-600">We train local athletes through community-supported tracks, providing safety gear, top-tier skate rentals, and Olympic-focused training protocols.</p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <!-- Card 1 -->
             <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
               <div class="w-12 h-12 rounded-xl bg-pacificTeal-50 flex items-center justify-center text-pacificTeal-600">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -169,7 +153,6 @@
               <h3 class="text-xl font-bold text-slate-900">High-Performance Coaching</h3>
               <p class="text-slate-600 text-sm leading-relaxed">Structured regimens focusing on dry-land dynamic power, on-ice cornering, cross-over mechanics, and state-of-the-art endurance science.</p>
             </div>
-            <!-- Card 2 -->
             <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
               <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center text-sunsetOrange-500">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -177,7 +160,6 @@
               <h3 class="text-xl font-bold text-slate-900">Accessible Athletics</h3>
               <p class="text-slate-600 text-sm leading-relaxed">As a registered 501(c)(3) nonprofit, we direct donations straight into equipment sponsorship pools and low-cost skate rentals for families.</p>
             </div>
-            <!-- Card 3 -->
             <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
               <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-poppyGold-500">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
@@ -189,7 +171,6 @@
         </div>
       </div>
 
-      <!-- Quick Newsletter Subscription -->
       <div class="max-w-4xl mx-auto px-4 my-16">
         <div class="bg-gradient-to-r from-pacificTeal-600 to-sunsetOrange-600 rounded-3xl p-8 sm:p-12 text-white text-center space-y-6 shadow-xl relative overflow-hidden">
           <div class="absolute -right-20 -top-20 w-60 h-60 rounded-full border border-white/10"></div>
@@ -210,7 +191,6 @@
       </div>
     </section>
 
-    <!-- TAB: EVENTS -->
     <section id="tab-events" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
         <div class="space-y-2">
@@ -225,15 +205,12 @@
       </div>
 
       <div id="events-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Injected via JavaScript -->
-      </div>
+        </div>
     </section>
 
-    <!-- TAB: SUPPORT / FUNDRAISING -->
     <section id="tab-support" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
         
-        <!-- Left Column -->
         <div class="lg:col-span-7 space-y-8">
           <div class="space-y-3">
             <span class="text-sm font-semibold text-sunsetOrange-500 uppercase tracking-widest block">Community Investment</span>
@@ -243,7 +220,6 @@
             </p>
           </div>
 
-          <!-- Official EIN Badge -->
           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-start gap-4 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50/50 rounded-full -mr-10 -mt-10 border border-amber-100"></div>
             <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-500 flex-shrink-0">
@@ -262,7 +238,6 @@
             </div>
           </div>
 
-          <!-- presets -->
           <div class="space-y-4">
             <h3 class="text-lg font-bold text-slate-900">How Your Support Fuels California Athletes:</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -290,15 +265,14 @@
           </div>
         </div>
 
-        <!-- Right Column (Donation Form) -->
         <div class="lg:col-span-5">
           <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-md sticky top-24 space-y-6">
             <div class="border-b border-slate-100 pb-4">
               <h3 class="text-xl font-bold text-slate-900 ">Support Us</h3>
               <p class="text-sm text-slate-500 space-y-1"> We use Givebutter to process our donations because they charge us 0% in platform fees. At checkout, Givebutter will ask for an optional tip to support their free platform. This is <strong>entirely voluntary</strong>—you can easily change this amount to $0 by selecting "Other" from the dropdown menu. 
               </p>
-               </div>
-        <givebutter-widget id="gMYyVd"></givebutter-widget>
+            </div>
+            <givebutter-widget id="gMYyVd"></givebutter-widget>
           </div>
         </div>
 
@@ -307,7 +281,6 @@
 
   </main>
 
-  <!-- Footer -->
   <footer class="bg-slate-900 text-white border-t border-slate-800 pt-16 pb-12 mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-slate-800 pb-12 mb-8">
       
@@ -351,7 +324,6 @@
 
     </div>
 
-    <!-- Hidden Door Activation: Click Copyright Text 5 Times -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
       <p id="footer-copyright" class="cursor-pointer hover:text-slate-400 transition-colors select-none font-medium">
         &copy; 2026 Bay Area Speed Skating Inc. All rights reserved.
@@ -362,7 +334,6 @@
     </div>
   </footer>
 
-  <!-- MODAL: SKATER REGISTRATION -->
   <div id="modal-registration" class="hidden fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden border border-slate-200 animate-slide-up">
       <div class="bg-gradient-to-r from-pacificTeal-600 to-sunsetOrange-500 p-6 text-white relative">
@@ -420,7 +391,6 @@
   </div>
 
 
-  <!-- MODAL: HIDDEN ADMIN LOGIN -->
   <div id="modal-admin-auth" class="hidden fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden border border-slate-200">
       <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50">
@@ -434,7 +404,6 @@
       </div>
 
       <div class="p-6 space-y-6">
-        <!-- Passcode Box -->
         <div class="space-y-3">
           <label class="block text-sm font-semibold text-slate-700">Access Key Credentials</label>
           <input type="password" id="admin-passcode-input" placeholder="Enter dashboard password" 
@@ -451,7 +420,6 @@
           <div class="flex-grow border-t border-slate-200"></div>
         </div>
 
-        <!-- Google Firebase authentication connector wrapper -->
         <button onclick="simulateGoogleLogin()" class="w-full flex items-center justify-center gap-3 py-3 border-2 border-slate-200 hover:border-slate-300 rounded-xl bg-white hover:bg-slate-50 transition-all shadow-sm">
           <svg class="w-5 h-5" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -466,27 +434,23 @@
   </div>
 
 
-  <!-- SECURED ADMIN PANEL OVERLAY VIEW -->
   <div id="panel-admin" class="hidden fixed inset-0 z-50 bg-slate-50 overflow-y-auto flex flex-col">
-    <!-- Admin Header -->
     <header class="bg-slate-900 text-white py-4 px-6 sticky top-0 flex items-center justify-between shadow-md z-10">
       <div class="flex items-center gap-3">
         <span class="bg-sunsetOrange-500 text-white font-extrabold px-3 py-1 rounded-lg text-xs tracking-wider uppercase">Administrative Console</span>
         <h2 class="text-xl font-bold tracking-tight text-white">BASS Dashboard</h2>
       </div>
       <div class="flex items-center gap-4">
-        <span class="text-xs text-slate-400 hidden sm:inline">User Token: <strong class="text-emerald-400 font-mono">rblitzer-authenticated</strong></span>
+        <span class="text-xs text-slate-400 hidden sm:inline">User Token: <strong class="text-emerald-400 font-mono">authenticated</strong></span>
         <button onclick="closeAdminPanel()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-colors">
           Exit Admin Interface
         </button>
       </div>
     </header>
 
-    <!-- Admin Content -->
     <div class="max-w-7xl mx-auto w-full p-4 sm:p-6 lg:p-8 flex-grow space-y-8 pb-20">
       
-      <!-- Stats Summary cards -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
         <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
           <span class="block text-xs font-bold text-slate-500 uppercase">Track Openings</span>
           <span id="admin-kpi-events" class="block text-3xl font-extrabold text-slate-900">0</span>
@@ -501,10 +465,8 @@
         </div>
       </div>
 
-      <!-- Left / Right Grid Structure for Admin tools -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        <!-- Post new Event -->
         <div class="lg:col-span-5 bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-6">
           <div>
             <h3 class="text-lg font-bold text-slate-900">Post New Skate Event</h3>
@@ -556,10 +518,8 @@
           </form>
         </div>
 
-        <!-- Ledger logs -->
         <div class="lg:col-span-7 space-y-8">
           
-          <!-- Event list register -->
           <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
             <div>
               <h3 class="text-lg font-bold text-slate-900">Scheduled Events Register</h3>
@@ -581,7 +541,6 @@
             </div>
           </div>
 
-          <!-- Athletes Ledger -->
           <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
             <div class="flex items-center justify-between">
               <div>
@@ -608,7 +567,6 @@
             </div>
           </div>
 
-          <!-- Subscribers Ledger -->
           <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
             <div class="flex items-center justify-between">
               <div>
@@ -624,7 +582,8 @@
                 <thead>
                   <tr class="border-b border-slate-200 text-slate-500 font-bold">
                     <th class="pb-3 pr-2">Subscriber Email</th>
-                    <th class="pb-3">Subscribed On</th>
+                    <th class="pb-3 pr-2">Subscribed On</th>
+                    <th class="pb-3 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody id="admin-table-subscribers" class="divide-y divide-slate-100 font-medium text-slate-800">
@@ -640,7 +599,6 @@
   </div>
 
 
-  <!-- SCRIPTING BEHAVIORS AND STATE REDUCERS -->
   <script>
     // State memory initialization with LocalStorage backup support
     let state = {
@@ -659,11 +617,6 @@
         { email: 'fast_ice@example.com', date: '2026-05-15' },
         { email: 'norcal_coach@example.com', date: '2026-05-20' }
       ],
-      donations: [
-        { name: 'Robert Blitzer', email: 'rblitzer@example.com', amount: 500, tier: 'Championship Sponsor', date: '2026-05-24' },
-        { name: 'Alice Wong', email: 'alice.w@example.com', amount: 150, tier: 'Safety Gear Package', date: '2026-05-25' }
-      ],
-      fundraisingGoal: 10000,
       currentFilter: 'all'
     };
 
@@ -701,11 +654,12 @@
     
     // Automatically sync and redraw the homepage if admin changes data in another tab
     window.addEventListener('storage', (event) => {
-    if (event.key === 'BASS_STATE_STORE') {
-      loadState(); // Pull the freshly saved admin arrays
-      renderAll(); // Push the updated array lengths to the homepage metrics
+      if (event.key === 'BASS_STATE_STORE') {
+        loadState();
+        renderAll();
       }
     });
+
     // Interactive Easter Egg: Click copyright text 5 times to reveal admin key entry
     let secretClickCounter = 0;
     document.getElementById('footer-copyright').addEventListener('click', () => {
@@ -837,7 +791,7 @@
     function simulateGoogleLogin() {
       showToast("Requesting Google Auth connection handshake...", "info");
       setTimeout(() => {
-        showToast("Access Granted: Admin account 'rblitzer@gmail.com' verified.", "success");
+        showToast("Access Granted: Admin account verified.", "success");
         closeAdminAuthModal();
         openAdminPanel();
       }, 1200);
@@ -870,34 +824,6 @@
     function selectPresetDonation(val) {
       document.getElementById('donation-amount').value = val;
       showToast(`Selected the $${val} Preset Campaign tier.`, "info");
-    }
-
-    function handleDonationSubmit(event) {
-      event.preventDefault();
-      const name = document.getElementById('donation-name').value.trim();
-      const email = document.getElementById('donation-email').value.trim();
-      const val = parseFloat(document.getElementById('donation-amount').value);
-
-      let level = "Skate Supporter";
-      if (val >= 500) level = "Championship Sponsor";
-      else if (val >= 150) level = "Safety Gear Package";
-      else if (val >= 75) level = "Skate Sharpening Companion";
-
-      state.donations.unshift({
-        name: name,
-        email: email,
-        amount: val,
-        tier: level,
-        date: new Date().toISOString().split('T')[0]
-      });
-
-      document.getElementById('donation-name').value = '';
-      document.getElementById('donation-email').value = '';
-      document.getElementById('donation-amount').value = '';
-
-      showToast(`Thank you, ${name}! Your simulated pledge of $${val} was documented.`, "success");
-      saveState();
-      renderAll();
     }
 
     function handleRegistrationSubmit(event) {
@@ -980,11 +906,9 @@
 
     function deleteSubscriber(index) {
       if (index > -1 && index < state.subscribers.length) {
-      const emailRemoved = state.subscribers[index].email;
-      // Remove the item from the state array
-      state.subscribers.splice(index, 1);
-    
-      // Alert the admin, commit to localStorage, and rebuild views
+        const emailRemoved = state.subscribers[index].email;
+        state.subscribers.splice(index, 1);
+      
         showToast(`Removed subscriber: ${emailRemoved}`, "info");
         saveState();
         renderAll();
@@ -1094,15 +1018,6 @@
       });
     }
 
-    function renderFundraisingDashboard() {
-      const sumDonated = state.donations.reduce((acc, curr) => acc + curr.amount, 0);
-      const percentGoal = Math.min(100, Math.round((sumDonated / state.fundraisingGoal) * 100));
-
-      document.getElementById('fund-raised-label').textContent = `$${sumDonated.toLocaleString()} Raised`;
-      document.getElementById('fund-goal-label').textContent = `$${state.fundraisingGoal.toLocaleString()}`;
-      document.getElementById('fund-progress-bar').style.width = `${percentGoal}%`;
-    }
-
     function renderAdmin() {
       const totalEvents = state.events.length;
       const totalRegistrations = state.registrants.length;
@@ -1164,9 +1079,9 @@
       tableSubscribers.innerHTML = '';
 
       if (state.subscribers.length === 0) {
-        tableSubscribers.innerHTML = `<tr><td colspan="2" class="py-4 text-center text-slate-400">No active subscribers.</td></tr>`;
+        tableSubscribers.innerHTML = `<tr><td colspan="3" class="py-4 text-center text-slate-400">No active subscribers.</td></tr>`;
       } else {
-        state.subscribers.forEach(sub => {
+        state.subscribers.forEach((sub, index) => {
           const row = document.createElement('tr');
           row.className = "hover:bg-slate-50 transition-colors";
           row.innerHTML = `
@@ -1192,11 +1107,6 @@
           const matchedEv = state.events.find(e => e.id === r.eventId);
           const evTitle = matchedEv ? matchedEv.title : "Purged";
           csvContent += `"${r.name}",${r.skaterAge},"${r.category}","${r.email}","${evTitle}"\n`;
-        });
-      } else if (type === 'donors') {
-        csvContent = "Donor Name,Tier Level,Email,Amount,Date\n";
-        state.donations.forEach(d => {
-          csvContent += `"${d.name}","${d.tier}","${d.email}",${d.amount},"${d.date}"\n`;
         });
       } else if (type === 'subscribers') {
         csvContent = "Email,Subscription Date\n";
