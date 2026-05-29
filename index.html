@@ -143,11 +143,11 @@
             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Tax-Exempt Status</span>
           </div>
           <div>
-            <span id="stat-active-events" class="block text-3xl font-extrabold text-pacificTeal-600">3</span>
+            <span id="stat-active-events" class="block text-3xl font-extrabold text-pacificTeal-600">0</span>
             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Active Meets</span>
           </div>
           <div>
-            <span id="stat-total-athletes" class="block text-3xl font-extrabold text-sunsetOrange-500">42</span>
+            <span id="stat-total-athletes" class="block text-3xl font-extrabold text-sunsetOrange-500">0</span>
             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Skater Roster</span>
           </div>
         </div>
@@ -698,7 +698,14 @@
         openAdminAuthModal();
       }
     }
-
+    
+    // Automatically sync and redraw the homepage if admin changes data in another tab
+    window.addEventListener('storage', (event) => {
+    if (event.key === 'BASS_STATE_STORE') {
+      loadState(); // Pull the freshly saved admin arrays
+      renderAll(); // Push the updated array lengths to the homepage metrics
+      }
+    });
     // Interactive Easter Egg: Click copyright text 5 times to reveal admin key entry
     let secretClickCounter = 0;
     document.getElementById('footer-copyright').addEventListener('click', () => {
