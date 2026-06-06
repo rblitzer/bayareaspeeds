@@ -600,21 +600,9 @@
   <script>
     // State memory initialization with LocalStorage backup support
     let state = {
-      events: [
-        { id: 1, title: 'Golden State Short Track Open', date: 'July 18, 2026', time: '08:00 AM', location: 'Oakland Ice Center', slots: 30, registered: 12, description: 'The premier summer short track speed skating meet in Northern California.' },
-        { id: 2, title: 'Sutro Heights Outdoor Time Trial', date: 'August 05, 2026', time: '09:30 AM', location: 'Sutro Heights Outdoor Oval', slots: 20, registered: 8, description: 'An outdoor inline and ice speed trial event prioritizing technique and raw cadence.' },
-        { id: 3, title: 'Pacific Coast Ice Academy Camp', date: 'September 12, 2026', time: '10:00 AM', location: 'San Jose Ice Arena', slots: 40, registered: 22, description: 'A 3-day development camp featuring specialized technique coaching and turn drills.' }
-      ],
-      registrants: [
-        { name: 'Chloe Chen', email: 'chloe.chen@example.com', eventId: 1, skaterAge: 14, category: 'Junior A (Age under 15)' },
-        { name: 'Marcus Miller', email: 'marcus.m@example.com', eventId: 1, skaterAge: 24, category: 'Senior Competitor' },
-        { name: 'Sarah Jenkins', email: 'sjenkins@example.com', eventId: 3, skaterAge: 19, category: 'Junior B (Age 15-19)' }
-      ],
-      subscribers: [
-        { email: 'skater_mom@example.com', date: '2026-05-10' },
-        { email: 'fast_ice@example.com', date: '2026-05-15' },
-        { email: 'norcal_coach@example.com', date: '2026-05-20' }
-      ],
+      events: [],
+      registrants: [],
+      subscribers: [],
       currentFilter: 'all'
     };
 
