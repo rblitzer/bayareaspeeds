@@ -78,8 +78,8 @@
 
       <nav class="hidden md:flex items-center gap-8">
         <button onclick="switchTab('home')" id="nav-home" class="font-medium text-pacificTeal-600 border-b-2 border-pacificTeal-500 pb-1 pt-1 transition-all">Home</button>
-        <button onclick="switchTab('events')" id="nav-events" class="font-medium text-slate-600 hover:text-pacificTeal-600 pb-1 pt-1 transition-all">Events & Races</button>
-        <button onclick="switchTab('support')" id="nav-support" class="font-medium text-slate-600 hover:text-pacificTeal-600 pb-1 pt-1 transition-all">Support Us</button>
+        <button onclick="switchTab('events')" id="nav-events" class="font-medium text-slate-600 hover:text-pacificTeal-600 pb-1 pt-1 transition-all">Events</button>
+        <button onclick="switchTab('support')" id="nav-support" class="font-medium text-slate-600 hover:text-pacificTeal-600 pb-1 pt-1 transition-all">Support</button>
       </nav>
 
       <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none">
@@ -91,7 +91,7 @@
 
     <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white shadow-inner py-4 px-6 flex flex-col gap-4 animate-fade-in">
       <button onclick="switchTab('home'); toggleMobileMenu()" class="text-left font-medium text-slate-900 py-2 border-b border-slate-50">Home</button>
-      <button onclick="switchTab('events'); toggleMobileMenu()" class="text-left font-medium text-slate-900 py-2 border-b border-slate-50">Events & Races</button>
+      <button onclick="switchTab('events'); toggleMobileMenu()" class="text-left font-medium text-slate-900 py-2 border-b border-slate-50">Events</button>
       <button onclick="switchTab('support'); toggleMobileMenu()" class="text-left font-medium text-slate-900 py-2 border-b border-slate-50">Support Us</button>
     </div>
   </header>
@@ -102,7 +102,7 @@
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 text-center space-y-8">
         <div class="inline-flex items-center gap-2 bg-pacificTeal-50 border border-pacificTeal-100 text-pacificTeal-700 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide shadow-sm">
           <span class="w-2.5 h-2.5 rounded-full bg-sunsetOrange-500 animate-pulse"></span>
-          Northern California's Speed Skating Non-Profit
+          Bay Area's Speed Skating Non-Profit
         </div>
         
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight tracking-tight">
@@ -111,7 +111,7 @@
         </h1>
         
         <p class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-           Bay Area Speed Skating is a non-profit dedicated to share the sport of speed skating with everyone. We organize community events on and off the ice to bring communities together,help athletes build speed and foster lifelong confidence and friendships. </p>
+           Bay Area Speed Skating is a non-profit dedicated to share the sport of speed skating with everyone. We organize community events on and off the ice to bring communities together and foster lifelong confidence and friendships. </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <button onclick="switchTab('events')" class="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-bold shadow-lg transition-all transform hover:-translate-y-1">
             Browse Upcoming Events
@@ -128,7 +128,7 @@
           </div>
           <div>
             <span id="stat-active-events" class="block text-3xl font-extrabold text-pacificTeal-600">0</span>
-            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Active Meets</span>
+            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Upcoming Events</span>
           </div>
           <div>
             <span id="stat-total-athletes" class="block text-3xl font-extrabold text-sunsetOrange-500">0</span>
@@ -141,7 +141,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center max-w-3xl mx-auto space-y-4">
             <h2 class="text-3xl font-extrabold text-slate-900"> Come Skate with us!</h2>
-            <p class="text-slate-600"> We organize events for all ages and levels, providing safety gear and on/off ice instructions as needed. </p>
+            <p class="text-slate-600"> We organize events for all ages and levels, providing information, safety gear and on/off ice instructions as needed. </p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
@@ -149,21 +149,21 @@
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
               </div>
               <h3 class="text-xl font-bold text-slate-900"> High-Performance Coaching for all</h3>
-              <p class="text-slate-600 text-sm leading-relaxed"> We partner with local clubs to bring high quality coaching for all skill levels, regardless of club affiliation, experience and background.</p>
+              <p class="text-slate-600 text-sm leading-relaxed"> We partner with local clubs to bring high quality coaching in our events for all skill levels, regardless of club affiliation, experience and background.</p>
             </div>
             <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
               <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center text-sunsetOrange-500">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
               <h3 class="text-xl font-bold text-slate-900">Accessible Athletics</h3>
-              <p class="text-slate-600 text-sm leading-relaxed">As a registered 501(c)(3) nonprofit, we direct all donations into necessary events expenses: facilities rentals, gear purchase, etc.</p>
+              <p class="text-slate-600 text-sm leading-relaxed">As a registered 501(c)(3) nonprofit, we direct all donations into necessary events expenses: facilities rentals, food and drinks, etc.</p>
             </div>
             <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
               <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-poppyGold-500">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
               </div>
               <h3 class="text-xl font-bold text-slate-900">California Community</h3>
-              <p class="text-slate-600 text-sm leading-relaxed">Connecting families, active master skaters, and young athletes across the Bay Area (San Francisco, Oakland, and San Jose,etc).</p>
+              <p class="text-slate-600 text-sm leading-relaxed">Connecting families, clubs, active skaters, and young athletes across the Bay Area (San Francisco, Oakland, and San Jose,etc).</p>
             </div>
           </div>
         </div>
@@ -174,9 +174,9 @@
           <div class="absolute -right-20 -top-20 w-60 h-60 rounded-full border border-white/10"></div>
           <div class="absolute -left-25 -bottom-25 w-60 h-60 rounded-full border border-white/10"></div>
           
-          <h3 class="text-3xl font-extrabold tracking-tight">Stay Updated on Race Track Schedules</h3>
+          <h3 class="text-3xl font-extrabold tracking-tight">Stay Updated on Local Happenings</h3>
           <p class="text-white/80 max-w-lg mx-auto text-sm leading-relaxed">
-            Subscribe to the Bay Area Speed Skating news. Receive monthly track slot bookings, registration discounts, and clinics info directly.
+            Follow us on Social Channels. Subscribe to the Bay Area Speed Skating news. Receive monthly track slot bookings, registration discounts, and clinics info directly.
           </p>
           <form onsubmit="handleNewsletterSubmit(event)" class="max-w-md mx-auto flex flex-col sm:flex-row gap-3 relative z-10">
             <input type="email" id="newsletter-email" placeholder="Your email address" required 
@@ -187,6 +187,14 @@
           </form>
         </div>
       </div>
+
+    <div class="bg-white border-y border-slate-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto space-y-4">
+            <h2 class="text-3xl font-extrabold text-slate-900"> Our Parnters (Coming soon!)</h2>
+           </div>
+        </div>
+    </div>
     </section>
 
     <section id="tab-events" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -194,7 +202,6 @@
         <div class="space-y-2">
           <span class="text-sm font-semibold text-pacificTeal-600 uppercase tracking-widest block">Active Calendar</span>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Upcoming Meets, Camps & Clinics</h2>
-          <p class="text-slate-600 max-w-xl">Register online to lock in your spot. Safety gear is available for rental as needed. </p>
         </div>
         <div class="flex items-center gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200 self-start md:self-auto">
           <button onclick="filterEvents('all')" id="btn-filter-all" class="px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-800 shadow-sm transition-all">All</button>
@@ -215,7 +222,7 @@
           <h2 class="text-3xl font-bold tracking-tight text-slate-900">Support Our Mission</h2>
           <p class="text-slate-600 text-base leading-relaxed">
         Bay Area Speed Skating Inc. is a registered 501(c)(3) public charity (EIN: 41-5160846). 
-      Your tax-deductible contributions directly fund ice time, high-performance coaching, and equipment scholarships for local athletes.
+      Your tax-deductible contributions directly fund community events, partnership with the wider skating community, and equipment scholarships for local athletes in need.
     </p>
     </div>
 
@@ -278,6 +285,7 @@
         </p>
 
         <div class="pt-2 space-y-2 text-xs text-slate-500">
+          <p>• Inline or quad skates & protection gear</p>
           <p>• Short track speed skates & blades</p>
           <p>• Cut-resistant suits, gloves & helmets</p>
           <p>• Camp coordination & timing assistance</p>
@@ -400,16 +408,16 @@
           <span class="font-bold text-lg tracking-tight">Bay Area Speed Skating</span>
         </div>
         <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
-          Building community and sharing the thrill of speed skating through short-track and long-track events on the West Coast.
+          Building community and sharing the thrill of speed skating through community events on the West Coast.
         </p>
       </div>
 
       <div class="space-y-4">
         <h4 class="text-sm font-bold uppercase tracking-widest text-slate-200">Public Portal</h4>
         <ul class="space-y-2 text-sm text-slate-400">
-          <li><button onclick="switchTab('home')" class="hover:text-pacificTeal-500 transition-colors">Home Landing</button></li>
-          <li><button onclick="switchTab('events')" class="hover:text-pacificTeal-500 transition-colors">Upcoming Meets</button></li>
-          <li><button onclick="switchTab('support')" class="hover:text-pacificTeal-500 transition-colors">Tax-Exempt Contributions</button></li>
+          <li><button onclick="switchTab('home')" class="hover:text-pacificTeal-500 transition-colors">Home </button></li>
+          <li><button onclick="switchTab('events')" class="hover:text-pacificTeal-500 transition-colors">Upcoming Events</button></li>
+          <li><button onclick="switchTab('support')" class="hover:text-pacificTeal-500 transition-colors">Support</button></li>
         </ul>
       </div>
 
