@@ -953,6 +953,24 @@
     function handleContactSubmit(e) {
       e.preventDefault();
       alert('Thank you for reaching out to Bay Area Speed Skating! We have received your request and will respond shortly.');
+
+      // Grab data from the form inputs (ensure your inputs have 'name' attributes matching these)
+    const formData = new FormData(e.target);
+    const name = formData.get('name') || '';
+    const email = formData.get('email') || '';
+    const message = formData.get('message') || '';
+    
+    // Set your organization's email address here
+    const recipient = 'bassi.admin@gmail.com';
+    
+    // Construct the subject and body, making sure to encode special characters
+    const subject = encodeURIComponent(`Inquiry from ${name} via Website`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    
+    // Trigger the email client
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    
+    // Optional: Reset the form after triggering
       e.target.reset();
     }
 
