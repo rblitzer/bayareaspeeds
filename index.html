@@ -491,7 +491,7 @@
 
   </main>
 
-  <!-- PROGRAM EDIT/CREATE MODAL -->
+<!-- PROGRAM EDIT/CREATE MODAL -->
   <div id="program-modal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-xl w-full p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-slate-100 pb-4">
@@ -528,28 +528,28 @@
 
         <div>
           <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Description</label>
-          <textarea id="prog-description" rows="3" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-pacificTeal-500 focus:outline-none"></textarea>
+          <textarea id="prog-description" rows="3" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-pacificTeal-500 focus:outline-none"></textarea>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Goal</label>
-            <input type="text" id="prog-goal" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-pacificTeal-500 focus:outline-none">
+            <input type="text" id="prog-goal" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-pacificTeal-500 focus:outline-none">
           </div>
           <div>
             <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Funding Need</label>
-            <input type="text" id="prog-funding" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-pacificTeal-500 focus:outline-none">
+            <input type="text" id="prog-funding" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-pacificTeal-500 focus:outline-none">
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Button Label</label>
-            <input type="text" id="prog-btn-label" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-pacificTeal-500 focus:outline-none">
+            <input type="text" id="prog-btn-label" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-pacificTeal-500 focus:outline-none">
           </div>
           <div>
-            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Contact Topic Mapping</label>
-            <input type="text" id="prog-topic" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-pacificTeal-500 focus:outline-none">
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Button Link URL (`btn-link`)</label>
+            <input type="url" id="prog-btn-link" placeholder="https://example.com/register" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-pacificTeal-500 focus:outline-none">
           </div>
         </div>
 
@@ -627,7 +627,7 @@
         goal: 'Free community access for all ages',
         funding: 'Rink rental & rental gear stock',
         btnLabel: 'Express Interest / Register Interest',
-        topic: 'Free Tryout Registration',
+        btnLink: 'https://forms.gle/XCa6tigcHmzVMqxs7',
         btnClass: 'bg-pacificTeal-600 hover:bg-pacificTeal-500 text-white'
       },
       {
@@ -639,7 +639,7 @@
         goal: 'Free outreach for Bay Area public schools',
         funding: 'Portable equipment kits & transport',
         btnLabel: 'Request School Visit',
-        topic: 'School / Community PE Demonstration',
+        btnLink: 'https://forms.gle/XCa6tigcHmzVMqxs7',
         btnClass: 'bg-slate-900 hover:bg-slate-800 text-white'
       },
       {
@@ -651,7 +651,7 @@
         goal: 'Weekly structured junior practice',
         funding: 'Dedicated ice slots & coaching stipends',
         btnLabel: 'Inquire & Join Waitlist',
-        topic: 'Youth Development Clinics',
+        btnLink: 'https://forms.gle/XCa6tigcHmzVMqxs7',
         btnClass: 'bg-pacificTeal-600 hover:bg-pacificTeal-500 text-white'
       },
       {
@@ -663,7 +663,7 @@
         goal: 'Summer development camps with guest coaches',
         funding: 'Scholarship funds for low-income athletes',
         btnLabel: 'Inquire About Camps',
-        topic: 'Summer Speed Skating Camp',
+        btnLink: 'https://forms.gle/XCa6tigcHmzVMqxs7',
         btnClass: 'bg-pacificTeal-600 hover:bg-pacificTeal-500 text-white'
       },
       {
@@ -675,7 +675,7 @@
         goal: 'Accessible adult health & fitness ice sessions',
         funding: 'Adult skate bank & ice reservation',
         btnLabel: 'Express Interest',
-        topic: 'Adult & Masters Program',
+        btnLink: 'https://forms.gle/XCa6tigcHmzVMqxs7',
         btnClass: 'bg-pacificTeal-600 hover:bg-pacificTeal-500 text-white'
       },
       {
@@ -687,7 +687,7 @@
         goal: 'Building a strong certified local coaching base',
         funding: 'Certification grants & clinic materials',
         btnLabel: 'Become an Ambassador',
-        topic: 'Volunteering & Coaching',
+        btnLink: 'https://forms.gle/XCa6tigcHmzVMqxs7',
         btnClass: 'bg-slate-900 hover:bg-slate-800 text-white'
       }
     ];
@@ -754,9 +754,9 @@
             </div>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 space-y-2">
-            <button onclick="switchTab('contact', '${p.topic}', 'Hello! I am interested in ${p.title}.')" class="w-full py-3 ${p.btnClass || 'bg-pacificTeal-600 text-white'} text-sm font-bold rounded-xl transition-colors text-center">
+            <a href="${p.btnLink || '#'}" target="_blank" rel="noopener noreferrer" class="block w-full py-3 ${p.btnClass || 'bg-pacificTeal-600 text-white'} text-sm font-bold rounded-xl transition-colors text-center">
               ${p.btnLabel}
-            </button>
+            </a>
           </div>
         </div>
       `).join('');
@@ -790,7 +790,7 @@
       document.getElementById('prog-goal').value = program ? program.goal : '';
       document.getElementById('prog-funding').value = program ? program.funding : '';
       document.getElementById('prog-btn-label').value = program ? program.btnLabel : 'Express Interest';
-      document.getElementById('prog-topic').value = program ? program.topic : 'General Question';
+      document.getElementById('prog-btn-link').value = program ? program.btnLink : 'https://forms.gle/XCa6tigcHmzVMqxs7';
       document.getElementById('program-modal').classList.remove('hidden');
     }
 
@@ -812,7 +812,7 @@
         goal: document.getElementById('prog-goal').value,
         funding: document.getElementById('prog-funding').value,
         btnLabel: document.getElementById('prog-btn-label').value,
-        topic: document.getElementById('prog-topic').value,
+        btnLink: document.getElementById('prog-btn-link').value,
         btnClass: 'bg-pacificTeal-600 hover:bg-pacificTeal-500 text-white'
       };
 
@@ -840,6 +840,7 @@
         savePrograms(programs);
       }
     }
+  </script>
 
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
