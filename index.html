@@ -702,16 +702,16 @@
     let isAdminLoggedIn = false;
     
     function getPrograms() {
-      const stored = localStorage.getItem('bass_programs');
+      const stored = localStorage.getItem('bass_programs_v2');
       if (!stored) {
-        localStorage.setItem('bass_programs', JSON.stringify(initialPrograms));
+        localStorage.setItem('bass_programs_v2', JSON.stringify(initialPrograms));
         return initialPrograms;
       }
       return JSON.parse(stored);
     }
 
     function savePrograms(programs) {
-      localStorage.setItem('bass_programs', JSON.stringify(programs));
+      localStorage.setItem('bass_programs_v2', JSON.stringify(programs));
       renderPrograms();
       renderAdminTable();
     }
