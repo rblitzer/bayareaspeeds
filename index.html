@@ -72,7 +72,7 @@
         </div>
         <div>
           <span class="block text-lg font-bold text-slate-900 tracking-tight leading-tight">Bay Area</span>
-          <span class="block text-xs font-semibold text-pacificTeal-600 tracking-widest uppercase -mt-0.5">Speed Skating Inc.</span>
+          <span class="block text-xs font-semibold text-pacificTeal-600 tracking-widest uppercase -mt-0.5">Speed Skating Initiative</span>
         </div>
       </a>
 
@@ -240,7 +240,7 @@
         <div class="text-center space-y-3 max-w-2xl mx-auto">
           <h2 class="text-3xl font-bold tracking-tight text-slate-900">Support Our Mission</h2>
           <p class="text-slate-600 text-base leading-relaxed">
-            Bay Area Speed Skating Inc. is a registered 501(c)(3) public charity (EIN: 41-5160846). As a 501(c)(3) non-profit, our mission is to eliminate barriers and bring inclusive athletic opportunities to schools and local groups across the entire Bay Area.
+            Bay Area Speed Skating Initiative is a registered 501(c)(3) public charity (EIN: 41-5160846). As a 501(c)(3) non-profit, our mission is to eliminate barriers and bring inclusive athletic opportunities to schools and local groups across the entire Bay Area.
             Your tax-deductible contributions directly fund community events, partnership with the wider skating community, and equipment scholarships for local athletes in need.
           </p>
         </div>
@@ -281,7 +281,7 @@
               </p>
               <div class="pt-2 space-y-2 text-xs text-slate-600">
                 <p><strong>EIN:</strong> 41-5160846</p>
-                <p><strong>Organization:</strong> Bay Area Speed Skating Inc.</p>
+                <p><strong>Organization:</strong> Bay Area Speed Skating Initiative</p>
               </div>
             </div>
 
@@ -626,7 +626,7 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
       <p id="footer-copyright" onclick="switchTab('admin')" class="cursor-pointer hover:text-slate-400 transition-colors select-none font-medium">
-        &copy; 2026 Bay Area Speed Skating Inc. All rights reserved.
+        &copy; 2026 Bay Area Speed Skating Initiative All rights reserved.
       </p>
       <div class="flex items-center gap-4">
         <span class="bg-slate-800 text-slate-400 px-3 py-1 rounded-full border border-slate-700/50">San Francisco Bay Area, CA</span>
@@ -700,33 +700,7 @@
     ];
 
     let isAdminLoggedIn = false;
-
-    function handleAdminLogin(e) {
-      e.preventDefault();
-      const user = document.getElementById('admin-username').value;
-      const pass = document.getElementById('admin-password').value;
-      const errorEl = document.getElementById('admin-login-error');
-
-      if (user === 'admin' && pass === 'admin') {
-        isAdminLoggedIn = true;
-        errorEl.classList.add('hidden');
-        document.getElementById('admin-login-view').classList.add('hidden');
-        document.getElementById('admin-content-view').classList.remove('hidden');
-        renderAdminTable();
-      } else {
-        errorEl.classList.remove('hidden');
-      }
-    }
-
-    function handleAdminLogout() {
-      isAdminLoggedIn = false;
-      document.getElementById('admin-username').value = '';
-      document.getElementById('admin-password').value = '';
-      document.getElementById('admin-login-view').classList.remove('hidden');
-      document.getElementById('admin-content-view').classList.add('hidden');
-      switchTab('home');
-    }
-
+    
     function getPrograms() {
       const stored = localStorage.getItem('bass_programs');
       if (!stored) {
@@ -769,84 +743,6 @@
       `).join('');
     }
 
-    function renderAdminTable() {
-      const tbody = document.getElementById('admin-programs-table');
-      if (!tbody) return;
-      const programs = getPrograms();
-
-      tbody.innerHTML = programs.map(p => `
-        <tr class="hover:bg-slate-50 transition-colors">
-          <td class="py-4 px-6 font-bold text-slate-900">${p.title}</td>
-          <td class="py-4 px-6 text-slate-600"><span class="px-2.5 py-1 rounded-full bg-slate-100 font-mono text-xs text-slate-700">cat-${p.category}</span></td>
-          <td class="py-4 px-6 text-slate-600">${p.age}</td>
-          <td class="py-4 px-6 text-right space-x-2">
-            <button onclick="editProgram('${p.id}')" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-semibold text-xs transition-colors">Edit</button>
-            <button onclick="deleteProgram('${p.id}')" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-lg font-semibold text-xs transition-colors">Delete</button>
-          </td>
-        </tr>
-      `).join('');
-    }
-
-    function openProgramModal(program = null) {
-      document.getElementById('modal-title').textContent = program ? 'Edit Program' : 'Add New Program';
-      document.getElementById('prog-id').value = program ? program.id : '';
-      document.getElementById('prog-title').value = program ? program.title : '';
-      document.getElementById('prog-category').value = program ? program.category : 'tryouts';
-      document.getElementById('prog-age').value = program ? program.age : '';
-      document.getElementById('prog-description').value = program ? program.description : '';
-      document.getElementById('prog-goal').value = program ? program.goal : '';
-      document.getElementById('prog-funding').value = program ? program.funding : '';
-      document.getElementById('prog-btn-label').value = program ? program.btnLabel : 'Express Interest';
-      document.getElementById('prog-btn-link').value = program ? program.btnLink : 'https://forms.gle/XCa6tigcHmzVMqxs7';
-      document.getElementById('program-modal').classList.remove('hidden');
-    }
-
-    function closeProgramModal() {
-      document.getElementById('program-modal').classList.add('hidden');
-    }
-
-    function handleProgramSave(e) {
-      e.preventDefault();
-      const id = document.getElementById('prog-id').value;
-      const programs = getPrograms();
-
-      const newProg = {
-        id: id || Date.now().toString(),
-        title: document.getElementById('prog-title').value,
-        category: document.getElementById('prog-category').value,
-        age: document.getElementById('prog-age').value,
-        description: document.getElementById('prog-description').value,
-        goal: document.getElementById('prog-goal').value,
-        funding: document.getElementById('prog-funding').value,
-        btnLabel: document.getElementById('prog-btn-label').value,
-        btnLink: document.getElementById('prog-btn-link').value,
-        btnClass: 'bg-pacificTeal-600 hover:bg-pacificTeal-500 text-white'
-      };
-
-      if (id) {
-        const index = programs.findIndex(p => p.id === id);
-        if (index !== -1) programs[index] = newProg;
-      } else {
-        programs.push(newProg);
-      }
-
-      savePrograms(programs);
-      closeProgramModal();
-    }
-
-    function editProgram(id) {
-      const programs = getPrograms();
-      const program = programs.find(p => p.id === id);
-      if (program) openProgramModal(program);
-    }
-
-    function deleteProgram(id) {
-      if (confirm('Are you sure you want to remove this program?')) {
-        let programs = getPrograms();
-        programs = programs.filter(p => p.id !== id);
-        savePrograms(programs);
-      }
-    }
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
       menu.classList.toggle('hidden');
